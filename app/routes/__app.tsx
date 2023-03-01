@@ -15,7 +15,7 @@ function AppLayout() {
     <div className="min-h-screen w-full  ">
       <div className="flex flex-col space-y-5">
         <div className="md:mx-10 flex items-center justify-between pt-5">
-          <div className="flex flex-col p-3 border rounded-full bg-white w-[210px]">
+          <div className="flex flex-col p-3 border rounded-full bg-white w-[220px]">
             <p className="text-xs">Zavolajte alebo objednajte online</p>
             <div className="flex space-x-2 items-center justify-center">
               <AiFillPhone className="inline-block text-black" />
@@ -32,7 +32,7 @@ function AppLayout() {
             fit="outside"
             className="hidden md:inline-block"
           />
-          <div className="flex py-1 px-2 border w-[210px] rounded-full bg-white items-center justify-center space-x-3">
+          <div className="flex py-1 px-2 border w-[220px] rounded-full bg-white items-center justify-center space-x-3">
             <div className="btn btn-circle btn-ghost">
               <div className="indicator ">
                 <AiOutlineShoppingCart className="w-6 h-6 " />
