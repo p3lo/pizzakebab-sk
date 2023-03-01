@@ -34,6 +34,10 @@ export function getAllOrderIds() {
   }
 }
 
+export function clearOrders() {
+  localStorage.removeItem('orders');
+}
+
 export function getProductsForOrders(orders: any, products: any) {
   return products.filter((product: { id: any }) => orders.includes(product.id));
 }

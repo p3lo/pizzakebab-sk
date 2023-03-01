@@ -1,26 +1,13 @@
 import React from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import type { Pizza } from '~/types/types';
 
-type Pizza = {
-  id: number;
-  name: string;
-  description: string;
-  '32cm': {
-    weight: string;
-    price: string;
-  };
-  '50cm': {
-    weight: string;
-    price: string;
-  };
-};
-
-function PizzaItem({ pizza, pizzaSize }: { pizza: Pizza; pizzaSize: '32cm' | '50cm' }) {
+function PizzaItem({ pizza, pizzaSize, pizzaIndex }: { pizza: Pizza; pizzaSize: '32cm' | '50cm'; pizzaIndex: number }) {
   return (
     <div className="flex flex-row items-start justify-between space-x-5">
       <div className="flex flex-col">
         <div className="basis-4/5 flex text-base-300 space-x-1 items-center">
-          <h2 className="font-bold text-lg">{pizza.id}.</h2>
+          <h2 className="font-bold text-lg">{pizzaIndex}.</h2>
           <h2 className="font-bold text-lg">{pizza.name}</h2>
           <p className="text-base-100/70 text-sm">( {pizza[pizzaSize].weight}g )</p>
         </div>

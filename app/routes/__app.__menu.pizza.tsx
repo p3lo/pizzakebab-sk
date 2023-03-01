@@ -3,20 +3,7 @@ import PizzaItem from '~/components/PizzaItem';
 import { pizza } from '~/data/products.server';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-
-type Pizza = {
-  id: number;
-  name: string;
-  description: string;
-  '32cm': {
-    weight: string;
-    price: string;
-  };
-  '50cm': {
-    weight: string;
-    price: string;
-  };
-};
+import type { Pizza } from '~/types/types';
 
 export async function loader() {
   return json({ pizza });
@@ -45,9 +32,9 @@ function MenuPizza() {
                 Ø 50 cm
               </button>
             </div>
-            {pizza?.map((pizzaItem) => (
+            {pizza?.map((pizzaItem, index) => (
               <div key={pizzaItem.id} className="flex flex-col space-y-2">
-                <PizzaItem pizza={pizzaItem} pizzaSize={pizzaSize} />
+                <PizzaItem pizza={pizzaItem} pizzaIndex={index + 1} pizzaSize={pizzaSize} />
               </div>
             ))}
           </div>
