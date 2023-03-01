@@ -24,11 +24,9 @@ export function removeFromOrders(id: number) {
   }
 }
 
-export function getAllOrderIds() {
-  const orders = localStorage.getItem('orders');
-
-  if (orders) {
-    return JSON.parse(orders);
+export default function getAllOrderIds(): number[] {
+  if (typeof localStorage !== 'undefined' && localStorage.getItem('orders')) {
+    return JSON.parse(localStorage.getItem('orders')!);
   } else {
     return [];
   }

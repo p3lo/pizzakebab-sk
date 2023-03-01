@@ -4,8 +4,13 @@ import { AiFillPhone, AiOutlineShoppingCart } from 'react-icons/ai';
 import { CiPizza } from 'react-icons/ci';
 import { GiDonerKebab, GiSandwich, GiCarrot, GiGlassShot } from 'react-icons/gi';
 import { Image } from '~/components/Image';
+import getAllOrderIds from '~/utils/helpers.client';
 
 function AppLayout() {
+  const [orders, setOrders] = React.useState<number[]>();
+  React.useEffect(() => {
+    setOrders(getAllOrderIds());
+  }, []);
   return (
     <div className="min-h-screen w-full  ">
       <div className="flex flex-col space-y-5">

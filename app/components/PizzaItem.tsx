@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Pizza } from '~/types/types';
+import { addToOrders } from '~/utils/helpers.client';
 
 function PizzaItem({ pizza, pizzaSize, pizzaIndex }: { pizza: Pizza; pizzaSize: '32cm' | '50cm'; pizzaIndex: number }) {
   return (
@@ -16,7 +17,10 @@ function PizzaItem({ pizza, pizzaSize, pizzaIndex }: { pizza: Pizza; pizzaSize: 
       <div className="basis-1/5 flex space-x-3 items-center">
         <p className="text-base-100 w-[60px]">{pizza[pizzaSize].price} €</p>
         <div className="btn btn-circle btn-ghost text-base-100">
-          <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
+          <AiOutlineShoppingCart
+            className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125"
+            onClick={() => addToOrders(pizza.id)}
+          />
         </div>
       </div>
     </div>
