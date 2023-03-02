@@ -9,3 +9,176 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Pizza {
+  id          Int           @id @default(autoincrement())
+  name        String
+  description String
+  size32cm    Size32CmPizza @relation(fields: [size32cmId], references: [id])
+  size32cmId  Int           @unique
+  size50cm    Size50CmPizza @relation(fields: [size50cmId], references: [id])
+  size50cmId  Int           @unique
+}
+
+model Size32CmPizza {
+  id     Int    @id @default(autoincrement())
+  weight Int
+  price  Int
+  Pizza  Pizza?
+}
+
+model Size50CmPizza {
+  id     Int    @id @default(autoincrement())
+  weight Int
+  price  Int
+  Pizza  Pizza?
+}
+
+model Kebab {
+  id          Int            @id @default(autoincrement())
+  name        String
+  description String
+  sizeSmall   SizeSmallKebab @relation(fields: [sizeSmallId], references: [id])
+  sizeSmallId Int            @unique
+  sizeLarge   SizeLargeKebab @relation(fields: [sizeLargeId], references: [id])
+  sizeLargeId Int            @unique
+}
+
+model SizeSmallKebab {
+  id     Int    @id @default(autoincrement())
+  weight Int
+  price  Int
+  Kebab  Kebab?
+}
+
+model SizeLargeKebab {
+  id     Int    @id @default(autoincrement())
+  weight Int
+  price  Int
+  Kebab  Kebab?
+}
+
+model Bageta {
+  id          Int             @id @default(autoincrement())
+  name        String
+  description String
+  sizeSmall   SizeSmallBageta @relation(fields: [sizeSmallId], references: [id])
+  sizeSmallId Int             @unique
+  sizeLarge   SizeLargeBageta @relation(fields: [sizeLargeId], references: [id])
+  sizeLargeId Int             @unique
+}
+
+model SizeSmallBageta {
+  id     Int     @id @default(autoincrement())
+  weight Int
+  price  Int
+  Bageta Bageta?
+}
+
+model SizeLargeBageta {
+  id     Int     @id @default(autoincrement())
+  weight Int
+  price  Int
+  Bageta Bageta?
+}
+
+model Salat {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  weight      Int
+  price       Int
+}
+
+model Drink {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  type        String
+  price       Int
+}
+
+model Other {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  weight      Int
+  price       Int
+}
+
+model Cart {
+  id      Int          @id @default(autoincrement())
+  pizzas  PizzaCart[]
+  kebabs  KebabCart[]
+  bagetas BagetaCart[]
+  salats  SalatCart[]
+  drinks  DrinkCart[]
+  others  OtherCart[]
+  user    User         @relation(fields: [userId], references: [userId])
+  userId  String
+}
+
+model PizzaCart {
+  id          Int    @id
+  name        String
+  description String
+  size        String
+  price       Int
+  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  cartId      Int?
+}
+
+model KebabCart {
+  id          Int    @id
+  name        String
+  description String
+  size        String
+  price       Int
+  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  cartId      Int?
+}
+
+model BagetaCart {
+  id          Int    @id
+  name        String
+  description String
+  size        String
+  price       Int
+  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  cartId      Int?
+}
+
+model SalatCart {
+  id          Int    @id
+  name        String
+  description String
+  weight      Int
+  price       Int
+  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  cartId      Int?
+}
+
+model DrinkCart {
+  id          Int    @id
+  name        String
+  description String
+  price       Int
+  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  cartId      Int?
+}
+
+model OtherCart {
+  id          Int    @id
+  name        String
+  description String
+  weight      Int
+  price       Int
+  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  cartId      Int?
+}
+
+model User {
+  id     Int    @id @default(autoincrement())
+  userId String @unique
+  orders Cart[]
+}
