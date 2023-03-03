@@ -2,6 +2,7 @@ import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import styles from './tailwind.css';
+import { db } from './utils/db.server';
 import { commitSession, getCreateUserSession, getUserId } from './utils/session.server';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
@@ -16,6 +17,7 @@ export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
   if (!userId) {
     const session = await getCreateUserSession();
+    await db.user.create({ data: { userId: session.data.userId } });
     return redirect('/', {
       headers: {
         'Set-Cookie': await commitSession(session),

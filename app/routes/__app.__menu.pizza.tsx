@@ -1,17 +1,24 @@
 import React from 'react';
 import PizzaItem from '~/components/PizzaItem';
-import { pizza } from '~/data/products.server';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import type { Pizza } from '~/types/types';
+import { db } from '~/utils/db.server';
 
 export async function loader() {
+  const pizza: Pizza[] = await db.pizza.findMany({
+    include: {
+      size32cm: true,
+      size50cm: true,
+    },
+  });
+
   return json({ pizza });
 }
 
 function MenuPizza() {
   const [pizzaSize, setPizzaSize] = React.useState<'32cm' | '50cm'>('32cm');
-  const { pizza } = useLoaderData() as { pizza: Pizza[] };
+  const { pizza }: { pizza: Pizza[] } = useLoaderData<typeof loader>();
   return (
     <div className="flex flex-col justify-center w-full space-y-10">
       <h1 className="flex justify-center font-bold text-2xl text-white">Pizza</h1>
@@ -32,9 +39,13 @@ function MenuPizza() {
                 Ø 50 cm
               </button>
             </div>
-            {pizza?.map((pizzaItem, index) => (
+            {pizza?.map((pizzaItem, index: number) => (
               <div key={pizzaItem.id} className="flex flex-col space-y-2">
-                <PizzaItem pizza={pizzaItem} pizzaIndex={index + 1} pizzaSize={pizzaSize} />
+                <PizzaItem
+                  pizza={pizzaItem}
+                  pizzaIndex={index + 1}
+                  pizzaSize={pizzaSize === '32cm' ? 'size32cm' : 'size50cm'}
+                />
               </div>
             ))}
           </div>

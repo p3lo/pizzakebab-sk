@@ -2,13 +2,19 @@ export type Pizza = {
   id: number;
   name: string;
   description: string;
-  '32cm': {
-    weight: string;
-    price: string;
+  size32cm?: {
+    id: number;
+    weight: number;
+    price: number;
+    pizza?: Pizza;
+    pizzaId?: number | null;
   };
-  '50cm': {
-    weight: string;
-    price: string;
+  size50cm?: {
+    id: number;
+    weight: number;
+    price: number;
+    pizza?: Pizza;
+    pizzaId?: number | null;
   };
 };
 
