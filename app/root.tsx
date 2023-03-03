@@ -15,17 +15,24 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
+
   if (!userId) {
     const session = await getCreateUserSession();
     await db.user.upsert({
-      where: { id: session.data.userId },
+      where: { userId: session.data.userId },
       update: {},
-      create: { id: session.data.userId },
+      create: { userId: session.data.userId },
     });
     return redirect('/', {
       headers: {
         'Set-Cookie': await commitSession(session),
       },
+    });
+  } else {
+    await db.user.upsert({
+      where: { userId: userId },
+      update: {},
+      create: { userId: userId },
     });
   }
   return null;
