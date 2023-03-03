@@ -11,75 +11,75 @@ datasource db {
 }
 
 model Pizza {
-  id          Int           @id @default(autoincrement())
-  name        String
-  description String
-  size32cm    Size32CmPizza @relation(fields: [size32cmId], references: [id])
-  size32cmId  Int           @unique
-  size50cm    Size50CmPizza @relation(fields: [size50cmId], references: [id])
-  size50cmId  Int           @unique
-}
-
-model Size32CmPizza {
-  id     Int    @id @default(autoincrement())
-  weight Int
-  price  Int
-  Pizza  Pizza?
-}
-
-model Size50CmPizza {
-  id     Int    @id @default(autoincrement())
-  weight Int
-  price  Int
-  Pizza  Pizza?
-}
-
-model Kebab {
   id          Int            @id @default(autoincrement())
   name        String
   description String
-  sizeSmall   SizeSmallKebab @relation(fields: [sizeSmallId], references: [id])
-  sizeSmallId Int            @unique
-  sizeLarge   SizeLargeKebab @relation(fields: [sizeLargeId], references: [id])
-  sizeLargeId Int            @unique
+  size32cm    Size32CmPizza?
+  size50cm    Size50CmPizza?
 }
 
-model SizeSmallKebab {
-  id     Int    @id @default(autoincrement())
-  weight Int
-  price  Int
-  Kebab  Kebab?
+model Size32CmPizza {
+  id      Int    @id @default(autoincrement())
+  weight  Int
+  price   Float
+  pizza   Pizza? @relation(fields: [pizzaId], references: [id])
+  pizzaId Int?   @unique
 }
 
-model SizeLargeKebab {
-  id     Int    @id @default(autoincrement())
-  weight Int
-  price  Int
-  Kebab  Kebab?
+model Size50CmPizza {
+  id      Int    @id @default(autoincrement())
+  weight  Int
+  price   Float
+  pizza   Pizza? @relation(fields: [pizzaId], references: [id])
+  pizzaId Int?   @unique
 }
 
-model Bageta {
+model Kebab {
   id          Int             @id @default(autoincrement())
   name        String
   description String
-  sizeSmall   SizeSmallBageta @relation(fields: [sizeSmallId], references: [id])
-  sizeSmallId Int             @unique
-  sizeLarge   SizeLargeBageta @relation(fields: [sizeLargeId], references: [id])
-  sizeLargeId Int             @unique
+  sizeSmall   SizeSmallKebab?
+  sizeLarge   SizeLargeKebab?
+}
+
+model SizeSmallKebab {
+  id      Int    @id @default(autoincrement())
+  weight  Int
+  price   Float
+  kebab   Kebab? @relation(fields: [kebabId], references: [id])
+  kebabId Int?   @unique
+}
+
+model SizeLargeKebab {
+  id      Int    @id @default(autoincrement())
+  weight  Int
+  price   Float
+  kebab   Kebab? @relation(fields: [kebabId], references: [id])
+  kebabId Int?   @unique
+}
+
+model Bageta {
+  id          Int              @id @default(autoincrement())
+  name        String
+  description String
+  sizeSmall   SizeSmallBageta?
+  sizeLarge   SizeLargeBageta?
 }
 
 model SizeSmallBageta {
-  id     Int     @id @default(autoincrement())
-  weight Int
-  price  Int
-  Bageta Bageta?
+  id       Int     @id @default(autoincrement())
+  weight   Int
+  price    Float
+  Bageta   Bageta? @relation(fields: [bagetaId], references: [id])
+  bagetaId Int?    @unique
 }
 
 model SizeLargeBageta {
-  id     Int     @id @default(autoincrement())
-  weight Int
-  price  Int
-  Bageta Bageta?
+  id       Int     @id @default(autoincrement())
+  weight   Int
+  price    Float
+  Bageta   Bageta? @relation(fields: [bagetaId], references: [id])
+  bagetaId Int?    @unique
 }
 
 model Salat {
@@ -87,7 +87,7 @@ model Salat {
   name        String
   description String
   weight      Int
-  price       Int
+  price       Float
 }
 
 model Drink {
@@ -95,7 +95,7 @@ model Drink {
   name        String
   description String
   type        String
-  price       Int
+  price       Float
 }
 
 model Other {
@@ -103,7 +103,7 @@ model Other {
   name        String
   description String
   weight      Int
-  price       Int
+  price       Float
 }
 
 model Cart {
@@ -123,7 +123,7 @@ model PizzaCart {
   name        String
   description String
   size        String
-  price       Int
+  price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])
   cartId      Int?
 }
@@ -133,7 +133,7 @@ model KebabCart {
   name        String
   description String
   size        String
-  price       Int
+  price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])
   cartId      Int?
 }
@@ -143,7 +143,7 @@ model BagetaCart {
   name        String
   description String
   size        String
-  price       Int
+  price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])
   cartId      Int?
 }
@@ -153,7 +153,7 @@ model SalatCart {
   name        String
   description String
   weight      Int
-  price       Int
+  price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])
   cartId      Int?
 }
@@ -162,7 +162,7 @@ model DrinkCart {
   id          Int    @id
   name        String
   description String
-  price       Int
+  price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])
   cartId      Int?
 }
@@ -172,7 +172,7 @@ model OtherCart {
   name        String
   description String
   weight      Int
-  price       Int
+  price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])
   cartId      Int?
 }
