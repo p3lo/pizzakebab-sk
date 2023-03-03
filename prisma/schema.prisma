@@ -142,7 +142,7 @@ model Cart {
 }
 
 model PizzaCart {
-  id          Int                @id
+  id          Int                @id @default(autoincrement())
   name        String
   description String
   size        String
@@ -154,7 +154,7 @@ model PizzaCart {
 }
 
 model PizzaCartPriloha {
-  id          Int        @id
+  id          Int        @id @default(autoincrement())
   name        String
   description String
   weight      Int
@@ -175,7 +175,7 @@ model KebabCart {
 }
 
 model BagetaCart {
-  id          Int    @id
+  id          Int    @id @default(autoincrement())
   name        String
   description String
   weight      Int
@@ -186,7 +186,7 @@ model BagetaCart {
 }
 
 model SalatCart {
-  id          Int    @id
+  id          Int    @id @default(autoincrement())
   name        String
   description String
   weight      Int
@@ -196,7 +196,7 @@ model SalatCart {
 }
 
 model DrinkCart {
-  id          Int    @id
+  id          Int    @id @default(autoincrement())
   name        String
   description String
   price       Float
@@ -205,7 +205,7 @@ model DrinkCart {
 }
 
 model OtherCart {
-  id          Int    @id
+  id          Int    @id @default(autoincrement())
   name        String
   description String
   weight      Int
