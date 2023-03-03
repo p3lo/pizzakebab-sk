@@ -26,7 +26,7 @@ function AppLayout() {
               </div>
             </div>
           </div>
-          <NavLink to="/" end className="basis-1/3 flex justify-center">
+          <NavLink to="/" end className="basis-1/3 flex justify-center" prefetch="intent">
             <Image
               src="logo_pizza_kebab.webp"
               alt="Logo"
@@ -52,31 +52,31 @@ function AppLayout() {
           <div className="navbar bg-primary text-primary-content rounded-xl">
             <div className="navbar-start"></div>
             <div className="navbar-center ">
-              <Link to="/pizza" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/pizza" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <CiPizza />
                   <p>PIZZA</p>
                 </div>
               </Link>
-              <Link to="/" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/kebab" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <GiDonerKebab />
                   <p>KEBAB</p>
                 </div>
               </Link>
-              <Link to="/" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <GiSandwich />
                   <p>BAGETY</p>
                 </div>
               </Link>
-              <Link to="/" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <GiCarrot />
                   <p>ŠALÁTY</p>
                 </div>
               </Link>
-              <Link to="/" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <GiGlassShot />
                   <p>NÁPOJE</p>
@@ -87,6 +87,7 @@ function AppLayout() {
           </div>
         </div>
       </div>
+
       <Outlet />
     </div>
   );

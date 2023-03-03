@@ -142,12 +142,24 @@ model Cart {
 }
 
 model PizzaCart {
-  id          Int    @id
+  id          Int                @id
   name        String
   description String
   size        String
+  weight      Int
   price       Float
-  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  Cart        Cart?              @relation(fields: [cartId], references: [id])
+  cartId      Int?
+  prilohy     PizzaCartPriloha[]
+}
+
+model PizzaCartPriloha {
+  id          Int        @id
+  name        String
+  description String
+  weight      Int
+  price       Float
+  pizzaCart   PizzaCart? @relation(fields: [cartId], references: [id])
   cartId      Int?
 }
 
@@ -155,6 +167,7 @@ model KebabCart {
   id          Int    @id
   name        String
   description String
+  weight      Int
   size        String
   price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])
@@ -165,6 +178,7 @@ model BagetaCart {
   id          Int    @id
   name        String
   description String
+  weight      Int
   size        String
   price       Float
   Cart        Cart?  @relation(fields: [cartId], references: [id])

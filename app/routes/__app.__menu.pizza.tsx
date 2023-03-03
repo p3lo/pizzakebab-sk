@@ -6,7 +6,7 @@ import type { Pizza } from '~/types/types';
 import { db } from '~/utils/db.server';
 
 export async function loader() {
-  const pizza: Pizza[] = await db.pizza.findMany({
+  const pizza = await db.pizza.findMany({
     include: {
       size32cm: true,
       size50cm: true,
@@ -18,7 +18,7 @@ export async function loader() {
 
 function MenuPizza() {
   const [pizzaSize, setPizzaSize] = React.useState<'32cm' | '50cm'>('32cm');
-  const { pizza }: { pizza: Pizza[] } = useLoaderData<typeof loader>();
+  const { pizza } = useLoaderData() as { pizza: Pizza[] };
   return (
     <div className="flex flex-col justify-center w-full space-y-10">
       <h1 className="flex justify-center font-bold text-2xl text-white">Pizza</h1>
@@ -48,11 +48,13 @@ function MenuPizza() {
                 />
               </div>
             ))}
+            <p className="text-base-100/70 text-xs">
+              * Krabica + balné v hodnote {pizzaSize === '32cm' ? '0.40' : '1.20'} €
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
 export default MenuPizza;

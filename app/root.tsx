@@ -1,6 +1,7 @@
 import type { LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
 import { redirect } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import KebabDrawer from './components/KebabDrawer';
 import styles from './tailwind.css';
 import { db } from './utils/db.server';
 import { commitSession, getCreateUserSession, getUserId } from './utils/session.server';
@@ -46,7 +47,18 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <div className="drawer drawer-end">
+          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            <Outlet />
+          </div>
+          <div className="drawer-side">
+            <label htmlFor="my-drawer" className="drawer-overlay"></label>
+            <div className="p-4 w-80 bg-base-content text-base-300">
+              <KebabDrawer />
+            </div>
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
