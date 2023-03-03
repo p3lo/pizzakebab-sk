@@ -97,6 +97,26 @@ async function seed() {
       },
     });
   }
+  const prilohy = getPrilohy();
+  for (const priloha of prilohy) {
+    await db.pizzaprilohy.create({
+      data: {
+        name: priloha.name,
+        prilohy32cm: {
+          create: {
+            weight: priloha.prilohy32cm.weight,
+            price: priloha.prilohy32cm.price,
+          },
+        },
+        prilohy50cm: {
+          create: {
+            weight: priloha.prilohy50cm.weight,
+            price: priloha.prilohy50cm.price,
+          },
+        },
+      },
+    });
+  }
 }
 
 seed();
@@ -651,6 +671,474 @@ function getOther() {
       description: 'hranolky, zeleninová obloha',
       weight: 120,
       price: 6.3,
+    },
+  ];
+}
+
+function getPrilohy() {
+  return [
+    {
+      name: 'Ananás',
+      prilohy32cm: {
+        weight: 80,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 170,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Cibuľa',
+      prilohy32cm: {
+        weight: 50,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 110,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Cesnak',
+      prilohy32cm: {
+        weight: 5,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 10,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Rajčina',
+      prilohy32cm: {
+        weight: 60,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 130,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Brokolica',
+      prilohy32cm: {
+        weight: 50,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 110,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Šampiňóny',
+      prilohy32cm: {
+        weight: 60,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 130,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Kukurica',
+      prilohy32cm: {
+        weight: 60,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 130,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Paprika',
+      prilohy32cm: {
+        weight: 50,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 110,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Olivy',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Šunka',
+      prilohy32cm: {
+        weight: 60,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 130,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Suchá saláma',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Pikantná saláma',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Baramie rohy',
+      prilohy32cm: {
+        weight: 40,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 85,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Chilli',
+      prilohy32cm: {
+        weight: 5,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 10,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Feferóny',
+      prilohy32cm: {
+        weight: 20,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 40,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Syr Niva',
+      prilohy32cm: {
+        weight: 20,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 40,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Mozarella',
+      prilohy32cm: {
+        weight: 60,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 125,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Syr Eidam',
+      prilohy32cm: {
+        weight: 70,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 150,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Parmezán',
+      prilohy32cm: {
+        weight: 5,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 10,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Artičoky',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Vajce',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Rukola',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Špargla',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Capari',
+      prilohy32cm: {
+        weight: 30,
+        price: 0.9,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 1.8,
+      },
+    },
+    {
+      name: 'Cesnakový dressing',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Bylinkový dressing',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Francúzsky dressing',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Jogurtový dressing',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Sweet-Chilli dressing',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Pikantný dressing',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Kečup',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Tatarská omáčka',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+
+    {
+      name: 'Majonéza',
+      prilohy32cm: {
+        weight: 0,
+        price: 0.6,
+      },
+      prilohy50cm: {
+        weight: 0,
+        price: 1.2,
+      },
+    },
+    {
+      name: 'Mleté mäso',
+      prilohy32cm: {
+        weight: 70,
+        price: 1.0,
+      },
+      prilohy50cm: {
+        weight: 150,
+        price: 2.0,
+      },
+    },
+    {
+      name: 'Kuracie mäso',
+      prilohy32cm: {
+        weight: 70,
+        price: 1.0,
+      },
+      prilohy50cm: {
+        weight: 150,
+        price: 2.0,
+      },
+    },
+    {
+      name: 'Kebab mäso',
+      prilohy32cm: {
+        weight: 70,
+        price: 1.0,
+      },
+      prilohy50cm: {
+        weight: 150,
+        price: 2.0,
+      },
+    },
+    {
+      name: 'Tuniak',
+      prilohy32cm: {
+        weight: 50,
+        price: 1.0,
+      },
+      prilohy50cm: {
+        weight: 110,
+        price: 2.0,
+      },
+    },
+    {
+      name: 'Klobása',
+      prilohy32cm: {
+        weight: 50,
+        price: 1.0,
+      },
+      prilohy50cm: {
+        weight: 110,
+        price: 2.0,
+      },
+    },
+    {
+      name: 'Anglická slanina',
+      prilohy32cm: {
+        weight: 50,
+        price: 1.0,
+      },
+      prilohy50cm: {
+        weight: 110,
+        price: 2.0,
+      },
+    },
+    {
+      name: 'Proscuitto di Parma',
+      prilohy32cm: {
+        weight: 30,
+        price: 2.8,
+      },
+      prilohy50cm: {
+        weight: 65,
+        price: 5.5,
+      },
+    },
+    {
+      name: 'Krevety',
+      prilohy32cm: {
+        weight: 70,
+        price: 2.8,
+      },
+      prilohy50cm: {
+        weight: 140,
+        price: 5.5,
+      },
+    },
+    {
+      name: 'Dary Mora',
+      prilohy32cm: {
+        weight: 70,
+        price: 2.8,
+      },
+      prilohy50cm: {
+        weight: 140,
+        price: 5.5,
+      },
     },
   ];
 }

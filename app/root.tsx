@@ -17,7 +17,11 @@ export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
   if (!userId) {
     const session = await getCreateUserSession();
-    await db.user.create({ data: { userId: session.data.userId } });
+    await db.user.upsert({
+      where: { id: session.data.userId },
+      update: {},
+      create: { id: session.data.userId },
+    });
     return redirect('/', {
       headers: {
         'Set-Cookie': await commitSession(session),

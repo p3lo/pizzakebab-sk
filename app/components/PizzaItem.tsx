@@ -26,7 +26,7 @@ function PizzaItem({
       </div>
       <div className="basis-1/5 flex space-x-3 items-center">
         <p className="text-base-100 w-[60px]">
-          {pizzaSize === 'size32cm' ? pizza.size32cm?.price : pizza.size50cm?.price} €
+          {pizzaSize === 'size32cm' ? pizza.size32cm?.price.toFixed(2) : pizza.size50cm?.price.toFixed(2)} €
         </p>
         <div className="btn btn-circle btn-ghost text-base-100">
           <AiOutlineShoppingCart

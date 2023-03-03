@@ -34,6 +34,29 @@ model Size50CmPizza {
   pizzaId Int?   @unique
 }
 
+model Pizzaprilohy {
+  id          Int                    @id @default(autoincrement())
+  name        String
+  prilohy32cm PrilohySize32CmPizza[]
+  prilohy50cm PrilohySize50CmPizza[]
+}
+
+model PrilohySize32CmPizza {
+  id        Int           @id @default(autoincrement())
+  weight    Int?
+  price     Float
+  priloha   Pizzaprilohy? @relation(fields: [prilohaId], references: [id])
+  prilohaId Int?
+}
+
+model PrilohySize50CmPizza {
+  id        Int           @id @default(autoincrement())
+  weight    Int?
+  price     Float
+  priloha   Pizzaprilohy? @relation(fields: [prilohaId], references: [id])
+  prilohaId Int?
+}
+
 model Kebab {
   id          Int             @id @default(autoincrement())
   name        String
