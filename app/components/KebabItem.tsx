@@ -1,5 +1,7 @@
+import { useSetAtom } from 'jotai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Kebab } from '~/types/types';
+import { drawerAtom, drawerKebabAtom } from '~/utils/drawerAtom';
 
 function KebabItem({
   kebab,
@@ -10,6 +12,22 @@ function KebabItem({
   kebabSize: 'sizeSmall' | 'sizeLarge';
   kebabIndex: number;
 }) {
+  const setKebab = useSetAtom(drawerKebabAtom);
+  const setDrawerType = useSetAtom(drawerAtom);
+  function setKebabAtom() {
+    const weight = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.weight : kebab.sizeLarge?.weight;
+    const price = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.price : kebab.sizeLarge?.price;
+    const size = kebabSize === 'sizeSmall' ? 'klasik' : 'XXL';
+    setKebab({
+      name: kebab.name,
+      description: kebab.description,
+      price: price || 0,
+      type: 'kebab',
+      weight: weight || 0,
+      size,
+    });
+    setDrawerType('kebab');
+  }
   return (
     <div className="flex flex-row items-start justify-between space-x-5">
       <div className="flex flex-col">
@@ -26,9 +44,19 @@ function KebabItem({
         <p className="text-base-100 w-[60px]">
           {kebabSize === 'sizeSmall' ? kebab.sizeSmall?.price.toFixed(2) : kebab.sizeLarge?.price.toFixed(2)} €
         </p>
-        <label htmlFor="my-drawer" className="drawer-button btn btn-circle btn-ghost text-base-100">
-          <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
-        </label>
+        {kebab.description.includes('Hranolky/ryža') ? (
+          <label
+            htmlFor="my-drawer"
+            className="drawer-button btn btn-circle btn-ghost text-base-100"
+            onClick={setKebabAtom}
+          >
+            <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
+          </label>
+        ) : (
+          <label className=" btn btn-circle btn-ghost text-base-100" onClick={setKebabAtom}>
+            <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
+          </label>
+        )}
       </div>
     </div>
   );

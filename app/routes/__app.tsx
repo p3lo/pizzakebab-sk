@@ -1,16 +1,81 @@
-import { Outlet, Link, NavLink } from '@remix-run/react';
+import type { LoaderArgs } from '@remix-run/node';
+import { json } from '@remix-run/node';
+import { Outlet, Link, NavLink, useLoaderData } from '@remix-run/react';
 import React from 'react';
 import { AiFillPhone, AiOutlineShoppingCart } from 'react-icons/ai';
 import { CiPizza } from 'react-icons/ci';
 import { GiDonerKebab, GiSandwich, GiCarrot, GiGlassShot } from 'react-icons/gi';
 import { Image } from '~/components/Image';
-import getAllOrderIds from '~/utils/helpers.client';
+import { db } from '~/utils/db.server';
+import { getUserId } from '~/utils/session.server';
+
+export async function loader({ request }: LoaderArgs) {
+  const userId = await getUserId(request);
+  if (!userId) return json({ totalPrice: 0, totalProducts: 0 });
+  try {
+    const cart = await db.cart.findUnique({
+      where: {
+        userId: userId,
+      },
+      include: {
+        pizzas: {
+          include: {
+            prilohy: true,
+          },
+        },
+        kebabs: true,
+        bagetas: true,
+        salats: true,
+        drinks: true,
+        others: true,
+      },
+    });
+    let totalPrice = 0;
+    let totalProducts = 0;
+
+    cart?.pizzas?.forEach((pizza) => {
+      const obal = pizza.size === '32cm' ? 0.4 : 1.2;
+      totalPrice += pizza.price + obal;
+      totalProducts += 1;
+      pizza.prilohy.forEach((priloha) => {
+        totalPrice += priloha.price;
+      });
+    });
+
+    cart?.kebabs?.forEach((kebab) => {
+      totalPrice += kebab.price + 0.4;
+      totalProducts += 1;
+    });
+
+    cart?.bagetas?.forEach((bageta) => {
+      totalPrice += bageta.price;
+      totalProducts += 1;
+    });
+
+    cart?.salats?.forEach((salat) => {
+      totalPrice += salat.price + 0.4;
+      totalProducts += 1;
+    });
+
+    cart?.drinks?.forEach((drink) => {
+      totalPrice += drink.price + 0.15;
+      totalProducts += 1;
+    });
+
+    cart?.others?.forEach((other) => {
+      totalPrice += other.price + 0.3;
+      totalProducts += 1;
+    });
+
+    return json({ totalPrice, totalProducts });
+  } catch (error) {
+    console.error(error);
+  }
+  return json({ totalPrice: 0, totalProducts: 0 });
+}
 
 function AppLayout() {
-  const [orders, setOrders] = React.useState<number[]>();
-  React.useEffect(() => {
-    setOrders(getAllOrderIds());
-  }, []);
+  const { totalPrice, totalProducts } = useLoaderData<typeof loader>();
   return (
     <div className="min-h-screen w-full  ">
       <div className="flex flex-col space-y-5">
@@ -37,14 +102,14 @@ function AppLayout() {
             />
           </NavLink>
           <div className="basis-1/3 justify-end flex">
-            <div className="flex  py-1 px-2 border w-[115px] rounded-full bg-white items-center justify-center space-x-3">
+            <div className="flex  py-1 px-2 border w-[140px] rounded-full bg-white items-center justify-center space-x-3">
               <div className="btn btn-circle btn-ghost">
                 <div className="indicator ">
                   <AiOutlineShoppingCart className="w-6 h-6 " />
-                  <span className="badge badge-xs indicator-item">0</span>
+                  <span className="badge badge-xs indicator-item">{totalProducts}</span>
                 </div>
               </div>
-              <p className="text-sm text-black font-bold">100 €</p>
+              <p className="text-sm text-black font-bold">{totalPrice.toFixed(2) || (0.0).toFixed(2)} €</p>
             </div>
           </div>
         </div>
@@ -64,7 +129,7 @@ function AppLayout() {
                   <p>KEBAB</p>
                 </div>
               </Link>
-              <Link to="/" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/bageta" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <GiSandwich />
                   <p>BAGETY</p>

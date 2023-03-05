@@ -1,5 +1,7 @@
+import { useSetAtom } from 'jotai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Pizza } from '~/types/types';
+import { drawerAtom, drawerPizzaAtom } from '~/utils/drawerAtom';
 
 function PizzaItem({
   pizza,
@@ -10,6 +12,22 @@ function PizzaItem({
   pizzaSize: 'size32cm' | 'size50cm';
   pizzaIndex: number;
 }) {
+  const setPizza = useSetAtom(drawerPizzaAtom);
+  const setDrawerType = useSetAtom(drawerAtom);
+  function setPizzaAtom() {
+    const weight = pizzaSize === 'size32cm' ? pizza.size32cm?.weight : pizza.size50cm?.weight;
+    const price = pizzaSize === 'size32cm' ? pizza.size32cm?.price : pizza.size50cm?.price;
+    const size = pizzaSize === 'size32cm' ? '32cm' : '50cm';
+    setPizza({
+      name: pizza.name,
+      description: pizza.description,
+      price: price || 0,
+      type: 'pizza',
+      weight: weight || 0,
+      size,
+    });
+    setDrawerType('pizza');
+  }
   return (
     <div className="flex flex-row items-start justify-between space-x-5">
       <div className="flex flex-col">
@@ -26,9 +44,13 @@ function PizzaItem({
         <p className="text-base-100 w-[60px]">
           {pizzaSize === 'size32cm' ? pizza.size32cm?.price.toFixed(2) : pizza.size50cm?.price.toFixed(2)} €
         </p>
-        <div className="btn btn-circle btn-ghost text-base-100">
+        <label
+          htmlFor="my-drawer"
+          className="drawer-button btn btn-circle btn-ghost text-base-100"
+          onClick={setPizzaAtom}
+        >
           <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
-        </div>
+        </label>
       </div>
     </div>
   );

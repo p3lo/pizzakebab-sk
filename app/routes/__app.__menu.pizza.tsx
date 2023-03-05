@@ -1,11 +1,16 @@
 import React from 'react';
 import PizzaItem from '~/components/PizzaItem';
+import type { LoaderArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import type { Pizza } from '~/types/types';
+import type { Pizza, Pizzaprilohy } from '~/types/types';
 import { db } from '~/utils/db.server';
+import { getUserId } from '~/utils/session.server';
+import { useSetAtom } from 'jotai';
+import { drawerPizzaPrilohyAtom, userIdAtom } from '~/utils/drawerAtom';
 
-export async function loader() {
+export async function loader({ request }: LoaderArgs) {
+  const userId = await getUserId(request);
   const pizza = await db.pizza.findMany({
     include: {
       size32cm: true,
@@ -13,12 +18,48 @@ export async function loader() {
     },
   });
 
-  return json({ pizza });
+  const prilohy = await db.pizzaprilohy.findMany({
+    include: {
+      prilohy32cm: true,
+      prilohy50cm: true,
+    },
+  });
+
+  return json({ pizza, prilohy, userId });
 }
 
 function MenuPizza() {
   const [pizzaSize, setPizzaSize] = React.useState<'32cm' | '50cm'>('32cm');
-  const { pizza } = useLoaderData() as { pizza: Pizza[] };
+  const { pizza, prilohy, userId } = useLoaderData() as { pizza: Pizza[]; prilohy: Pizzaprilohy[]; userId: string };
+
+  const setUserId = useSetAtom(userIdAtom);
+  const setPrilohy = useSetAtom(drawerPizzaPrilohyAtom);
+
+  React.useEffect(() => {
+    const transformedPrilohy = prilohy
+      .map(({ id, name, prilohy32cm, prilohy50cm }) => {
+        const prilohy32cmData = {
+          id,
+          name,
+          price: prilohy32cm?.price || 0,
+          weight: prilohy32cm?.weight || 0,
+          size: '32cm',
+        };
+        const prilohy50cmData = {
+          id,
+          name,
+          price: prilohy50cm?.price || 0,
+          weight: prilohy50cm?.weight || 0,
+          size: '50cm',
+        };
+
+        return [prilohy32cmData, prilohy50cmData];
+      })
+      .flat();
+    setUserId(userId || '');
+    setPrilohy(transformedPrilohy);
+  }, [userId, prilohy, setUserId, setPrilohy]);
+
   return (
     <div className="flex flex-col justify-center w-full space-y-10">
       <h1 className="flex justify-center font-bold text-2xl text-white">Pizza</h1>

@@ -1,3 +1,4 @@
+import type { ActionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import React from 'react';
@@ -15,6 +16,36 @@ export async function loader() {
 
   return json({ kebab });
 }
+export async function action({ request }: ActionArgs) {
+  const body = await request.formData();
+  const userId = body.get('userId')?.toString() || '';
+  const getKebab = body.get('kebab');
+  let kebab = null;
+  if (getKebab) {
+    kebab = JSON.parse(getKebab.toString());
+  }
+  if (kebab) {
+    await db.user.update({
+      where: { userId: userId },
+      data: {
+        orders: {
+          create: {
+            kebabs: {
+              create: {
+                name: kebab.name,
+                price: kebab.price,
+                weight: kebab.weight,
+                size: kebab.size,
+                description: kebab.description,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+  return json({ kebab });
+}
 
 function KebabMenu() {
   const [kebabSize, setKebabSize] = React.useState<'klasik' | 'XXL'>('klasik');
@@ -22,11 +53,11 @@ function KebabMenu() {
 
   return (
     <div className="flex flex-col justify-center w-full space-y-10">
-      <h1 className="flex justify-center font-bold text-2xl text-white">Kebab</h1>
-      <div className="w-full rounded-2xl bg-base-content shadow-lg shadow-neutral-content/25">
+      <h1 className="flex justify-center text-2xl font-bold text-white">Kebab</h1>
+      <div className="w-full shadow-lg rounded-2xl bg-base-content shadow-neutral-content/25">
         <div className="m-5">
           <div className="flex flex-col space-y-5">
-            <div className="btn-group justify-center">
+            <div className="justify-center btn-group">
               <button
                 className={`btn btn-sm ${kebabSize === 'klasik' && 'btn-active'}`}
                 onClick={() => setKebabSize('klasik')}
@@ -49,7 +80,7 @@ function KebabMenu() {
                 />
               </div>
             ))}
-            <p className="text-base-100/70 text-xs">* Obal + balné v hodnote 0.40 €</p>
+            <p className="text-xs text-base-100/70">* Obal + balné v hodnote 0.40 €</p>
           </div>
         </div>
       </div>

@@ -14,7 +14,36 @@ export type Pizza = {
   };
 };
 
+export type Pizzaprilohy = {
+  id: number;
+  name: string;
+  prilohy32cm?: {
+    id: number;
+    weight?: number;
+    price: number;
+  };
+  prilohy50cm?: {
+    id: number;
+    weight?: number;
+    price: number;
+  };
+};
+
 export type Kebab = {
+  id: number;
+  name: string;
+  description: string;
+  sizeSmall?: {
+    weight: number;
+    price: number;
+  };
+  sizeLarge?: {
+    weight: number;
+    price: number;
+  };
+};
+
+export type Bageta = {
   id: number;
   name: string;
   description: string;
