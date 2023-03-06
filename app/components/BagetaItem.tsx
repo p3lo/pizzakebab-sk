@@ -1,8 +1,6 @@
 import { useFetcher } from '@remix-run/react';
-import { useSetAtom } from 'jotai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Bageta } from '~/types/types';
-import { drawerAtom } from '~/utils/drawerAtom';
 
 function BagetaItem({
   bageta,
@@ -13,11 +11,7 @@ function BagetaItem({
   bagetaSize: 'sizeSmall' | 'sizeLarge';
   bagetaIndex: number;
 }) {
-  const setDrawerType = useSetAtom(drawerAtom);
   const fetcher = useFetcher();
-  function setBagetaAtom() {
-    setDrawerType('bageta');
-  }
   function addToCart() {
     const weight = bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.weight : bageta.sizeLarge?.weight;
     const price = bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.price : bageta.sizeLarge?.price;
@@ -40,19 +34,19 @@ function BagetaItem({
     );
   }
   return (
-    <div className="flex flex-row items-start justify-between space-x-5">
+    <div className="flex flex-row items-start justify-between space-x-3 sm:space-x-5">
       <div className="flex flex-col">
         <div className="basis-4/5 flex text-base-300 space-x-1 items-center">
-          <h2 className="font-bold text-lg">{bagetaIndex}.</h2>
-          <h2 className="font-bold text-lg">{bageta.name}</h2>
-          <p className="text-base-100/70 text-sm">
+          <h2 className="font-bold sm:text-lg">{bagetaIndex}.</h2>
+          <h2 className="font-bold sm:text-lg">{bageta.name}</h2>
+          <p className="text-base-100/70 text-xs sm:text-sm whitespace-nowrap">
             ( {bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.weight : bageta.sizeLarge?.weight}g )
           </p>
         </div>
-        <p className="text-base-100/70 text-sm">{bageta.description}</p>
+        <p className="text-base-100/70 text-xs sm:text-sm">{bageta.description}</p>
       </div>
-      <div className="basis-1/5 flex space-x-3 items-center">
-        <p className="text-base-100 w-[60px]">
+      <div className="basis-1/5 flex space-x-1 sm:space-x-3 items-center justify-end">
+        <p className="text-base-100 whitespace-nowrap text-sm sm:text-md">
           {bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.price.toFixed(2) : bageta.sizeLarge?.price.toFixed(2)} €
         </p>
         <label className="btn btn-circle btn-ghost text-base-100" onClick={addToCart}>

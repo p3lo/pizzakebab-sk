@@ -3,8 +3,8 @@ import { json } from '@remix-run/node';
 import { Outlet, Link, NavLink, useLoaderData } from '@remix-run/react';
 import React from 'react';
 import { AiFillPhone, AiOutlineShoppingCart } from 'react-icons/ai';
-import { CiPizza } from 'react-icons/ci';
-import { GiDonerKebab, GiSandwich, GiCarrot, GiGlassShot } from 'react-icons/gi';
+import { CiBurger, CiPizza } from 'react-icons/ci';
+import { GiDonerKebab, GiSandwich, GiCarrot, GiGlassShot, GiHamburger } from 'react-icons/gi';
 import { Image } from '~/components/Image';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
@@ -82,7 +82,7 @@ function AppLayout() {
         <div className="md:mx-10 flex items-center justify-between pt-5">
           <div className="basis-1/3 ">
             <div className="flex flex-col p-3 border rounded-full bg-white w-[220px]">
-              <p className="text-xs">Zavolajte alebo objednajte online</p>
+              <p className="text-xs flex justify-center">Zavolajte alebo objednajte online</p>
               <div className="flex space-x-2 items-center justify-center">
                 <AiFillPhone className="inline-block text-black" />
                 <a href="tel:+421944992552" className="text-sm font-bold text-black">
@@ -103,12 +103,12 @@ function AppLayout() {
           </NavLink>
           <div className="basis-1/3 justify-end flex">
             <div className="flex  py-1 px-2 border w-[140px] rounded-full bg-white items-center justify-center space-x-3">
-              <div className="btn btn-circle btn-ghost">
+              <Link to="/objednavka" className="btn btn-circle btn-ghost">
                 <div className="indicator ">
                   <AiOutlineShoppingCart className="w-6 h-6 " />
                   <span className="badge badge-xs indicator-item">{totalProducts}</span>
                 </div>
-              </div>
+              </Link>
               <p className="text-sm text-black font-bold">{totalPrice.toFixed(2) || (0.0).toFixed(2)} €</p>
             </div>
           </div>
@@ -117,6 +117,12 @@ function AppLayout() {
           <div className="navbar bg-primary text-primary-content rounded-xl">
             <div className="navbar-start"></div>
             <div className="navbar-center ">
+              <Link to="/novinky" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
+                <div className="flex space-x-1 items-center">
+                  <CiBurger />
+                  <p>Novinky</p>
+                </div>
+              </Link>
               <Link to="/pizza" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <CiPizza />

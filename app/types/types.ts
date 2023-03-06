@@ -65,6 +65,14 @@ export type Salaty = {
   price: number;
 };
 
+export type Novinky = {
+  id: number;
+  name: string;
+  description: string;
+  weight: number;
+  price: number;
+};
+
 export type Napoje = {
   id: number;
   name: string;

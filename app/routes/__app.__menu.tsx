@@ -1,6 +1,5 @@
 import { Outlet } from '@remix-run/react';
 import React from 'react';
-import PizzaDrawer from '~/components/PizzaDrawer';
 
 function MenuLayout() {
   return (
