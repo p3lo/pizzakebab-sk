@@ -54,81 +54,91 @@ function PizzaDrawer() {
   }
 
   return (
-    <div className="w-full flex flex-col h-full justify-between">
-      <div className="flex flex-col space-y-5">
-        <div className="flex flex-col">
-          <label htmlFor="my-drawer" className="flex justify-end drawer-button cursor-pointer">
-            <AiOutlineCloseSquare className="w-6 h-6" />
-          </label>
-          <h2 className="font-bold flex justify-center text-xl w-full">Pizza</h2>
-        </div>
-        <div className="flex flex-col space-y-1">
-          <div className="flex w-full justify-between">
-            <div className="flex flex-col">
-              <div className="flex items-center space-x-2">
-                <p className="font-semibold">{pizza.name}</p>
-                <p className="text-sm text-base-100/70">{pizza.size}</p>
-                <p className="text-sm text-base-100/70">( {pizza.weight} g)</p>
-              </div>
-              <p className="text-sm text-base-100/70">{pizza.description}</p>
-            </div>
-
-            <p>{pizza.price.toFixed(2)} €</p>
+    <div className="p-4 w-[500px] bg-base-content text-base-300">
+      <div className="flex flex-col justify-between w-full h-full">
+        <div className="flex flex-col space-y-5">
+          <div className="flex flex-col">
+            <label htmlFor="my-drawer" className="flex justify-end cursor-pointer drawer-button">
+              <AiOutlineCloseSquare className="w-6 h-6" />
+            </label>
+            <h2 className="flex justify-center w-full text-xl font-bold">Pizza</h2>
           </div>
-          <div className="flex w-full justify-between text-sm text-base-100/70">
-            <p>+ Krabica a balné</p>
-            <p>{pizza.size === '32cm' ? (0.4).toFixed(2) : (1.2).toFixed(2)} €</p>
-          </div>
-          {vybranePrilohy.length > 0 &&
-            vybranePrilohy.map((priloha, index) => (
-              <div key={priloha.id} className="flex w-full justify-between text-sm text-base-100/70">
-                <p>
-                  + {priloha.name} {priloha.weight !== 0 && `(${priloha.weight} g)`}
-                </p>
-                <div className="flex space-x-3 items-center">
-                  <p>{priloha.price.toFixed(2)} €</p>
-
-                  <BsTrash className="w-4 h-4 cursor-pointer text-red-700" onClick={removePriloha.bind(null, index)} />
+          <div className="flex flex-col space-y-1">
+            <div className="flex justify-between w-full">
+              <div className="flex flex-col">
+                <div className="flex items-center space-x-2">
+                  <p className="font-semibold">{pizza.name}</p>
+                  <p className="text-sm text-base-100/70">{pizza.size}</p>
+                  <p className="text-sm text-base-100/70">( {pizza.weight} g)</p>
                 </div>
+                <p className="text-sm text-base-100/70">{pizza.description}</p>
               </div>
-            ))}
+              <div className="flex items-center space-x-3">
+                <p>{pizza.price.toFixed(2)} €</p>
+                <div className="w-4" />
+              </div>
+            </div>
+            <div className="flex justify-between w-full text-sm text-base-100/70">
+              <p>+ Krabica a balné</p>
+              <div className="flex items-center space-x-3">
+                <p>{pizza.size === '32cm' ? (0.4).toFixed(2) : (1.2).toFixed(2)} €</p>
+                <div className="w-4" />
+              </div>
+            </div>
+            {vybranePrilohy.length > 0 &&
+              vybranePrilohy.map((priloha, index) => (
+                <div key={priloha.id} className="flex justify-between w-full text-sm text-base-100/70">
+                  <p>
+                    + {priloha.name} {priloha.weight !== 0 && `(${priloha.weight} g)`}
+                  </p>
+                  <div className="flex items-center space-x-3">
+                    <p>{priloha.price.toFixed(2)} €</p>
+
+                    <BsTrash
+                      className="w-4 h-4 text-red-700 cursor-pointer"
+                      onClick={removePriloha.bind(null, index)}
+                    />
+                  </div>
+                </div>
+              ))}
+          </div>
+          <div className="flex w-full border-b border-base-100" />
+          <h2 className="flex justify-center w-full text-lg font-semibold">Prílohy na pizzu</h2>
+          <div className="flex w-full space-x-3">
+            <select
+              className="w-full max-w-xs select shrink-0 select-bordered border-base-100 bg-base-content"
+              onChange={(e) => setSelectPriloha(Number(e.target.value))}
+            >
+              <option className="text-base-100/50" disabled selected>
+                Vyberte prílohu
+              </option>
+              {prilohy.map(
+                (priloha) =>
+                  priloha.size === pizza.size && (
+                    <option key={priloha.id} value={priloha.id}>
+                      {priloha.name} {priloha.weight !== 0 && `(${priloha.weight} g)`} - {priloha.price.toFixed(2)} €
+                    </option>
+                  )
+              )}
+            </select>
+            <button className="gap-2 btn btn-outline btn-primary grow" onClick={addVybranaPriloha}>
+              <MdAddShoppingCart />
+              Pridať
+            </button>
+          </div>
         </div>
-        <div className="flex w-full border-b border-base-100" />
-        <h2 className="font-semibold flex justify-center text-lg w-full">Prílohy na pizzu</h2>
-        <div className="flex space-x-3 w-full">
-          <select
-            className="select shrink-0 w-full max-w-xs select-bordered border-base-100 bg-base-content"
-            onChange={(e) => setSelectPriloha(Number(e.target.value))}
-          >
-            <option className="text-base-100/50" disabled selected>
-              Vyberte prílohu
-            </option>
-            {prilohy.map(
-              (priloha) =>
-                priloha.size === pizza.size && (
-                  <option key={priloha.id} value={priloha.id}>
-                    {priloha.name} {priloha.weight !== 0 && `(${priloha.weight} g)`} - {priloha.price.toFixed(2)} €
-                  </option>
-                )
-            )}
-          </select>
-          <button className="btn btn-outline btn-primary grow gap-2" onClick={addVybranaPriloha}>
-            <MdAddShoppingCart />
-            Pridať
-          </button>
-        </div>
-      </div>
-      <div className="flex flex-col space-y-3">
-        <div className="w-full flex justify-between">
-          <h3 className="font-bold">Spolu</h3>
-          <p>{getSumPrice().toFixed(2)} €</p>
-        </div>
-        <div className="flex w-full border-b border-base-100" />
-        <div className="flex justify-center">
-          <label htmlFor="my-drawer" className="btn btn-primary drawer-button gap-2" onClick={addToCart}>
-            <AiOutlineShoppingCart />
-            Pridať do košíka
-          </label>
+        <div className="flex flex-col space-y-3">
+          <div className="flex justify-between w-full">
+            <h3 className="font-bold">Spolu</h3>
+            <p>{getSumPrice().toFixed(2)} €</p>
+          </div>
+          <div className="flex w-full border-b border-base-100" />
+          <div className="flex justify-center">
+            <label htmlFor="my-drawer" className="gap-2 btn btn-primary drawer-button" onClick={addToCart}>
+              <AiOutlineShoppingCart />
+              Pridať do košíka
+            </label>
+          </div>
         </div>
       </div>
     </div>

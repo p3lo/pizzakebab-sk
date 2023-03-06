@@ -137,7 +137,7 @@ model Cart {
   salats  SalatCart[]
   drinks  DrinkCart[]
   others  OtherCart[]
-  user    User         @relation(fields: [userId], references: [userId])
+  user    User         @relation(fields: [userId], references: [userId], onDelete: Cascade)
   userId  String       @unique
 }
 
@@ -148,7 +148,7 @@ model PizzaCart {
   size        String
   weight      Int
   price       Float
-  Cart        Cart?              @relation(fields: [cartId], references: [id])
+  Cart        Cart?              @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId      Int?
   prilohy     PizzaCartPriloha[]
 }
@@ -158,7 +158,7 @@ model PizzaCartPriloha {
   name      String
   weight    Int
   price     Float
-  pizzaCart PizzaCart? @relation(fields: [cartId], references: [id])
+  pizzaCart PizzaCart? @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId    Int?
 }
 
@@ -169,7 +169,7 @@ model KebabCart {
   weight      Int
   size        String
   price       Float
-  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  Cart        Cart?  @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId      Int?
 }
 
@@ -180,7 +180,7 @@ model BagetaCart {
   weight      Int
   size        String
   price       Float
-  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  Cart        Cart?  @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId      Int?
 }
 
@@ -190,7 +190,7 @@ model SalatCart {
   description String
   weight      Int
   price       Float
-  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  Cart        Cart?  @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId      Int?
 }
 
@@ -199,7 +199,7 @@ model DrinkCart {
   name        String
   description String
   price       Float
-  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  Cart        Cart?  @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId      Int?
 }
 
@@ -209,7 +209,7 @@ model OtherCart {
   description String
   weight      Int
   price       Float
-  Cart        Cart?  @relation(fields: [cartId], references: [id])
+  Cart        Cart?  @relation(fields: [cartId], references: [id], onDelete: Cascade)
   cartId      Int?
 }
 

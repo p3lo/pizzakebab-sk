@@ -4,6 +4,7 @@ import { redirect } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import { useAtomValue } from 'jotai';
 import KebabDrawer from './components/KebabDrawer';
+import MainMenuDrawer from './components/MainMenuDrawer';
 import PizzaDrawer from './components/PizzaDrawer';
 import styles from './tailwind.css';
 import { db } from './utils/db.server';
@@ -146,10 +147,10 @@ export default function App() {
           </div>
           <div className="drawer-side">
             <label htmlFor="my-drawer" className="drawer-overlay"></label>
-            <div className="p-4 w-[500px] bg-base-content text-base-300">
-              {drawerType === 'pizza' && <PizzaDrawer />}
-              {drawerType === 'kebab' && <KebabDrawer />}
-            </div>
+
+            {drawerType === 'pizza' && <PizzaDrawer />}
+            {drawerType === 'kebab' && <KebabDrawer />}
+            {drawerType === 'menu' && <MainMenuDrawer />}
           </div>
         </div>
         <ScrollRestoration />

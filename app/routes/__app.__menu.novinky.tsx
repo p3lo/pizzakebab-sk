@@ -58,8 +58,8 @@ function MenuNovinky() {
   const { novinky } = useLoaderData() as { novinky: Novinky[] };
   return (
     <div className="flex flex-col justify-center w-full space-y-10">
-      <h1 className="flex justify-center font-bold text-2xl text-white">Šaláty</h1>
-      <div className="w-full rounded-2xl bg-base-content shadow-lg shadow-neutral-content/25">
+      <h1 className="flex justify-center text-2xl font-bold text-white">Novinky</h1>
+      <div className="w-full shadow-lg rounded-2xl bg-base-content shadow-neutral-content/25">
         <div className="m-5">
           <div className="flex flex-col space-y-5">
             {novinky?.map((novinkyItem, index: number) => (
