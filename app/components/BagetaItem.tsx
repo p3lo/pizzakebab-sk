@@ -1,3 +1,4 @@
+import { useFetcher } from '@remix-run/react';
 import { useSetAtom } from 'jotai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Bageta } from '~/types/types';
@@ -13,8 +14,30 @@ function BagetaItem({
   bagetaIndex: number;
 }) {
   const setDrawerType = useSetAtom(drawerAtom);
+  const fetcher = useFetcher();
   function setBagetaAtom() {
     setDrawerType('bageta');
+  }
+  function addToCart() {
+    const weight = bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.weight : bageta.sizeLarge?.weight;
+    const price = bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.price : bageta.sizeLarge?.price;
+    const size = bagetaSize === 'sizeSmall' ? 'mala' : 'velka';
+    const bagetaDb = {
+      name: bageta.name,
+      description: bageta.description,
+      price: price || 0,
+      type: 'bageta',
+      weight: weight || 0,
+      size,
+    };
+    fetcher.submit(
+      {
+        bageta: JSON.stringify(bagetaDb),
+      },
+      {
+        method: 'post',
+      }
+    );
   }
   return (
     <div className="flex flex-row items-start justify-between space-x-5">
@@ -32,7 +55,7 @@ function BagetaItem({
         <p className="text-base-100 w-[60px]">
           {bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.price.toFixed(2) : bageta.sizeLarge?.price.toFixed(2)} €
         </p>
-        <label className="btn btn-circle btn-ghost text-base-100" onClick={setBagetaAtom}>
+        <label className="btn btn-circle btn-ghost text-base-100" onClick={addToCart}>
           <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
         </label>
       </div>

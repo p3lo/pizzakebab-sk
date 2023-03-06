@@ -57,4 +57,20 @@ export type Bageta = {
   };
 };
 
+export type Salaty = {
+  id: number;
+  name: string;
+  description: string;
+  weight: number;
+  price: number;
+};
+
+export type Napoje = {
+  id: number;
+  name: string;
+  description: string;
+  type: string;
+  price: number;
+};
+
 export type Products = [Pizza, Kebab];

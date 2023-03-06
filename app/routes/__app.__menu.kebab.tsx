@@ -5,6 +5,7 @@ import React from 'react';
 import KebabItem from '~/components/KebabItem';
 import type { Kebab } from '~/types/types';
 import { db } from '~/utils/db.server';
+import { getUserId } from '~/utils/session.server';
 
 export async function loader() {
   const kebab = await db.kebab.findMany({
@@ -18,33 +19,44 @@ export async function loader() {
 }
 export async function action({ request }: ActionArgs) {
   const body = await request.formData();
-  const userId = body.get('userId')?.toString() || '';
+  const userId = await getUserId(request);
+  if (!userId) return null;
   const getKebab = body.get('kebab');
   let kebab = null;
   if (getKebab) {
     kebab = JSON.parse(getKebab.toString());
   }
   if (kebab) {
-    await db.user.update({
-      where: { userId: userId },
-      data: {
-        orders: {
+    await db.cart.upsert({
+      where: {
+        userId,
+      },
+      update: {
+        kebabs: {
           create: {
-            kebabs: {
-              create: {
-                name: kebab.name,
-                price: kebab.price,
-                weight: kebab.weight,
-                size: kebab.size,
-                description: kebab.description,
-              },
-            },
+            name: kebab.name,
+            price: kebab.price,
+            weight: kebab.weight,
+            size: kebab.size,
+            description: kebab.description,
+          },
+        },
+      },
+      create: {
+        userId,
+        kebabs: {
+          create: {
+            name: kebab.name,
+            price: kebab.price,
+            weight: kebab.weight,
+            size: kebab.size,
+            description: kebab.description,
           },
         },
       },
     });
   }
-  return json({ kebab });
+  return null;
 }
 
 function KebabMenu() {

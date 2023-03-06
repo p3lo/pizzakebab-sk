@@ -1,9 +1,11 @@
+import type { ActionArgs } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import React from 'react';
 import BagetaItem from '~/components/BagetaItem';
 import type { Bageta } from '~/types/types';
 import { db } from '~/utils/db.server';
+import { getUserId } from '~/utils/session.server';
 
 export async function loader() {
   const bageta = await db.bageta.findMany({
@@ -14,6 +16,48 @@ export async function loader() {
   });
 
   return json({ bageta });
+}
+
+export async function action({ request }: ActionArgs) {
+  const body = await request.formData();
+  const userId = await getUserId(request);
+  if (!userId) return null;
+  const getBageta = body.get('bageta');
+  let bageta = null;
+  if (getBageta) {
+    bageta = JSON.parse(getBageta.toString());
+  }
+  if (bageta) {
+    await db.cart.upsert({
+      where: {
+        userId,
+      },
+      update: {
+        bagetas: {
+          create: {
+            name: bageta.name,
+            price: bageta.price,
+            weight: bageta.weight,
+            size: bageta.size,
+            description: bageta.description,
+          },
+        },
+      },
+      create: {
+        userId,
+        bagetas: {
+          create: {
+            name: bageta.name,
+            price: bageta.price,
+            weight: bageta.weight,
+            size: bageta.size,
+            description: bageta.description,
+          },
+        },
+      },
+    });
+  }
+  return null;
 }
 
 function BagetaMenu() {

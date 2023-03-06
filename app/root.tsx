@@ -1,4 +1,3 @@
-import type { Cart, Prisma } from '@prisma/client';
 import type { ActionArgs, LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
 
 import { redirect } from '@remix-run/node';

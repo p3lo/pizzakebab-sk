@@ -1,3 +1,4 @@
+import { useFetcher } from '@remix-run/react';
 import { useSetAtom } from 'jotai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Kebab } from '~/types/types';
@@ -14,6 +15,7 @@ function KebabItem({
 }) {
   const setKebab = useSetAtom(drawerKebabAtom);
   const setDrawerType = useSetAtom(drawerAtom);
+  const fetcher = useFetcher();
   function setKebabAtom() {
     const weight = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.weight : kebab.sizeLarge?.weight;
     const price = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.price : kebab.sizeLarge?.price;
@@ -27,6 +29,27 @@ function KebabItem({
       size,
     });
     setDrawerType('kebab');
+  }
+  function addToCart() {
+    const weight = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.weight : kebab.sizeLarge?.weight;
+    const price = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.price : kebab.sizeLarge?.price;
+    const size = kebabSize === 'sizeSmall' ? 'klasik' : 'XXL';
+    const kebabDb = {
+      name: kebab.name,
+      description: kebab.description,
+      price: price || 0,
+      type: 'kebab',
+      weight: weight || 0,
+      size,
+    };
+    fetcher.submit(
+      {
+        kebab: JSON.stringify(kebabDb),
+      },
+      {
+        method: 'post',
+      }
+    );
   }
   return (
     <div className="flex flex-row items-start justify-between space-x-5">
@@ -53,7 +76,7 @@ function KebabItem({
             <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
           </label>
         ) : (
-          <label className=" btn btn-circle btn-ghost text-base-100" onClick={setKebabAtom}>
+          <label className=" btn btn-circle btn-ghost text-base-100" onClick={addToCart}>
             <AiOutlineShoppingCart className="w-5 h-5 transition duration-300 ease-in-out hover:scale-125" />
           </label>
         )}

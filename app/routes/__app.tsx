@@ -135,13 +135,13 @@ function AppLayout() {
                   <p>BAGETY</p>
                 </div>
               </Link>
-              <Link to="/" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/salaty" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <GiCarrot />
                   <p>ŠALÁTY</p>
                 </div>
               </Link>
-              <Link to="/" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
+              <Link to="/napoje" prefetch="intent" className="text-xl font-light btn btn-ghost w-[120px]">
                 <div className="flex space-x-1 items-center">
                   <GiGlassShot />
                   <p>NÁPOJE</p>
