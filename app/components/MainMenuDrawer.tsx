@@ -1,10 +1,11 @@
-import { Link } from '@remix-run/react';
+import { useNavigate } from '@remix-run/react';
 import React from 'react';
 import { AiOutlineCloseSquare, AiOutlineHome } from 'react-icons/ai';
 import { CiBurger, CiPizza } from 'react-icons/ci';
 import { GiCarrot, GiDonerKebab, GiGlassShot, GiSandwich } from 'react-icons/gi';
 
 function MainMenuDrawer() {
+  const navigate = useNavigate();
   return (
     <div className="p-4 w-[250px] bg-base-content text-base-300">
       <div className="flex flex-col w-full h-full space-y-5">
@@ -16,48 +17,72 @@ function MainMenuDrawer() {
         </div>
         <div className="flex w-full border-b border-base-100" />
         <div className="flex flex-col space-y-1 ">
-          <Link to="/" prefetch="intent" className="w-full btn btn-primary">
+          <label htmlFor="my-drawer" className="w-full btn btn-primary drawer-button" onClick={() => navigate('/')}>
             <div className="flex items-center space-x-1">
               <AiOutlineHome />
               <p>Domov</p>
             </div>
-          </Link>
-          <Link to="/novinky" prefetch="intent" className="w-full btn btn-primary">
+          </label>
+          <label
+            htmlFor="my-drawer"
+            className="w-full btn btn-primary drawer-button"
+            onClick={() => navigate('/novinky')}
+          >
             <div className="flex items-center space-x-1">
               <CiBurger />
               <p>Novinky</p>
             </div>
-          </Link>
-          <Link to="/pizza" prefetch="intent" className="w-full btn btn-primary">
+          </label>
+          <label
+            htmlFor="my-drawer"
+            onClick={() => navigate('/pizza')}
+            className="drawer-button w-full btn btn-primary"
+          >
             <div className="flex items-center space-x-1">
               <CiPizza />
               <p>PIZZA</p>
             </div>
-          </Link>
-          <Link to="/kebab" prefetch="intent" className="w-full btn btn-primary">
+          </label>
+          <label
+            htmlFor="my-drawer"
+            onClick={() => navigate('/kebab')}
+            className="drawer-button w-full btn btn-primary"
+          >
             <div className="flex items-center space-x-1">
               <GiDonerKebab />
               <p>KEBAB</p>
             </div>
-          </Link>
-          <Link to="/bageta" prefetch="intent" className="w-full btn btn-primary">
+          </label>
+          <label
+            htmlFor="my-drawer"
+            onClick={() => navigate('/bageta')}
+            className=" drawer-button w-full btn btn-primary"
+          >
             <div className="flex items-center space-x-1">
               <GiSandwich />
               <p>BAGETY</p>
             </div>
-          </Link>
-          <Link to="/salaty" prefetch="intent" className="w-full btn btn-primary">
+          </label>
+          <label
+            htmlFor="my-drawer"
+            onClick={() => navigate('/salaty')}
+            className="drawer-button w-full btn btn-primary"
+          >
             <div className="flex items-center space-x-1">
               <GiCarrot />
               <p>ŠALÁTY</p>
             </div>
-          </Link>
-          <Link to="/napoje" prefetch="intent" className="w-full btn btn-primary">
+          </label>
+          <label
+            htmlFor="my-drawer"
+            onClick={() => navigate('/napoje')}
+            className="drawer-button w-full btn btn-primary"
+          >
             <div className="flex items-center space-x-1">
               <GiGlassShot />
               <p>NÁPOJE</p>
             </div>
-          </Link>
+          </label>
         </div>
       </div>
     </div>
