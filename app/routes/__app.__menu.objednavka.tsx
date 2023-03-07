@@ -195,8 +195,8 @@ function Objednavka() {
   return (
     <motion.div
       className="w-full flex"
-      initial={{ opacity: 1, scale: 1 }}
-      animate={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.5 }}
     >
       <ObjednavkaSummary objednavka={objednavka} totalPrice={totalPrice} />
