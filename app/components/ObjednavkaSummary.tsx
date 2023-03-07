@@ -7,8 +7,8 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
   const fetcher = useFetcher();
   return (
     <div className="flex flex-col justify-center w-full space-y-10">
-      <h1 className="flex justify-center text-2xl font-bold text-white">Objednávka</h1>
-      <div className="w-full shadow-lg rounded-2xl bg-base-content shadow-neutral-content/25">
+      <h1 className="flex justify-center text-2xl font-bold text-base-content">Objednávka</h1>
+      <div className="w-full shadow-2xl rounded-2xl bg-base-content shadow-primary-content">
         <div className="m-5">
           <div className="flex flex-col space-y-5 text-base-100">
             {objednavka?.others?.length! > 0 && (
@@ -31,7 +31,7 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
                           </p>
                           <input type="hidden" name="otherId" value={other.id} />
                           <button type="submit" name="intent" value="other">
-                            <BsTrash className="w-4 h-4 text-red-700 cursor-pointer" />
+                            <BsTrash className="w-4 h-4 text-red-500 cursor-pointer" />
                           </button>
                         </div>
                       </div>
@@ -68,7 +68,7 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
                           </p>
                           <input type="hidden" name="pizzaId" value={pizza.id} />
                           <button type="submit" name="intent" value="pizza">
-                            <BsTrash className="w-4 h-4 text-red-700 cursor-pointer" />
+                            <BsTrash className="w-4 h-4 text-red-500 cursor-pointer" />
                           </button>
                         </div>
                       </fetcher.Form>
@@ -89,7 +89,7 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
                               </p>
                               <input type="hidden" name="prilohaId" value={priloha.id} />
                               <button type="submit" name="intent" value="priloha">
-                                <BsTrash className="w-4 h-4 text-red-700 cursor-pointer" />
+                                <BsTrash className="w-4 h-4 text-red-500 cursor-pointer" />
                               </button>
                             </div>
                           </fetcher.Form>
@@ -128,7 +128,7 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
                           </p>
                           <input type="hidden" name="kebabId" value={kebab.id} />
                           <button type="submit" name="intent" value="kebab">
-                            <BsTrash className="w-4 h-4 text-red-700 cursor-pointer" />
+                            <BsTrash className="w-4 h-4 text-red-500 cursor-pointer" />
                           </button>
                         </div>
                       </fetcher.Form>
@@ -165,7 +165,7 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
                           </p>
                           <input type="hidden" name="bagetaId" value={bageta.id} />
                           <button type="submit" name="intent" value="bageta">
-                            <BsTrash className="w-4 h-4 text-red-700 cursor-pointer" />
+                            <BsTrash className="w-4 h-4 text-red-500 cursor-pointer" />
                           </button>
                         </div>
                       </fetcher.Form>
@@ -194,7 +194,7 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
                           </p>
                           <input type="hidden" name="salatId" value={salat.id} />
                           <button type="submit" name="intent" value="salat">
-                            <BsTrash className="w-4 h-4 text-red-700 cursor-pointer" />
+                            <BsTrash className="w-4 h-4 text-red-500 cursor-pointer" />
                           </button>
                         </div>
                       </fetcher.Form>
@@ -229,7 +229,7 @@ function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderDa
                           </p>
                           <input type="hidden" name="drinkId" value={drink.id} />
                           <button type="submit" name="intent" value="drink">
-                            <BsTrash className="w-4 h-4 text-red-700 cursor-pointer" />
+                            <BsTrash className="w-4 h-4 text-red-500 cursor-pointer" />
                           </button>
                         </div>
                       </fetcher.Form>

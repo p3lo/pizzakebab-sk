@@ -95,7 +95,7 @@ function PizzaDrawer() {
                     <p>{priloha.price.toFixed(2)} €</p>
 
                     <BsTrash
-                      className="w-4 h-4 text-red-700 cursor-pointer"
+                      className="w-4 h-4 text-red-500 cursor-pointer"
                       onClick={removePriloha.bind(null, index)}
                     />
                   </div>

@@ -134,7 +134,7 @@ export async function action({ request }: ActionArgs) {
 export default function App() {
   const drawerType = useAtomValue(drawerAtom);
   return (
-    <html lang="en" data-theme="coffee">
+    <html lang="en" data-theme="bumblebee">
       <head>
         <Meta />
         <Links />

@@ -2,8 +2,8 @@ import { Image } from '~/components/Image';
 
 export default function Index() {
   return (
-    <div className="flex h-full space-x-5 m-10 ">
-      <div className="basis-1/3 grow rounded-xl overflow-hidden">
+    <div className="flex h-full m-10 space-x-5 ">
+      <div className="overflow-hidden basis-1/3 grow rounded-xl">
         <Image src="pizza.jpg" alt="Pizza" fit="cover" width={800} height={750} />
       </div>
       <div className="flex flex-col space-y-5 basis-2/3">

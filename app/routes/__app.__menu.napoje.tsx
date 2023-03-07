@@ -71,8 +71,8 @@ function MenuNapoje() {
       animate={{ opacity: 1, scale: 1 }}
       className="flex flex-col justify-center w-full space-y-10"
     >
-      <h1 className="flex justify-center text-2xl font-bold text-white">Nápoje</h1>
-      <div className="w-full shadow-lg rounded-2xl bg-base-content shadow-neutral-content/25">
+      <h1 className="flex justify-center text-2xl font-bold text-base-content">Nápoje</h1>
+      <div className="w-full shadow-2xl rounded-2xl bg-base-content shadow-primary-content">
         <div className="m-5">
           <div className="flex flex-col space-y-6">
             <p className="flex justify-center text-lg italic font-semibold text-base-100">Nealkoholické nápoje</p>
