@@ -6,6 +6,7 @@ import SalatyItem from '~/components/SalatyItem';
 import type { Salaty } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
+import { motion } from 'framer-motion';
 
 export async function loader() {
   const salaty = await db.salat.findMany();
@@ -57,9 +58,15 @@ export async function action({ request }: ActionArgs) {
 function MenuSalaty() {
   const { salaty } = useLoaderData() as { salaty: Salaty[] };
   return (
-    <div className="flex flex-col justify-center w-full space-y-10">
-      <h1 className="flex justify-center font-bold text-2xl text-white">Šaláty</h1>
-      <div className="w-full rounded-2xl bg-base-content shadow-lg shadow-neutral-content/25">
+    <motion.div
+      key="bageta"
+      exit={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="flex flex-col justify-center w-full space-y-10"
+    >
+      <h1 className="flex justify-center text-2xl font-bold text-white">Šaláty</h1>
+      <div className="w-full shadow-lg rounded-2xl bg-base-content shadow-neutral-content/25">
         <div className="m-5">
           <div className="flex flex-col space-y-5">
             {salaty?.map((salatyItem, index: number) => (
@@ -71,7 +78,7 @@ function MenuSalaty() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

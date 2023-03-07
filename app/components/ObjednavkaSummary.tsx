@@ -3,7 +3,7 @@ import React from 'react';
 import { BsTrash } from 'react-icons/bs';
 import type { LoaderData } from '~/routes/__app.__menu.objednavka';
 
-function ObjednavkaSummary({ objednavka, totalPrice }: LoaderData) {
+function ObjednavkaSummary({ objednavka, totalPrice, goToContactInfo }: LoaderData) {
   const fetcher = useFetcher();
   return (
     <div className="flex flex-col justify-center w-full space-y-10">
@@ -251,7 +251,9 @@ function ObjednavkaSummary({ objednavka, totalPrice }: LoaderData) {
               <p className="text-lg font-bold">{totalPrice.toFixed(2)} €</p>
             </div>
             <div className="flex justify-center">
-              <button className="btn btn-primary">Objednať</button>
+              <button className="btn btn-primary" onClick={() => goToContactInfo(false)}>
+                Objednať
+              </button>
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { useSetAtom } from 'jotai';
 import { drawerPizzaPrilohyAtom, userIdAtom } from '~/utils/drawerAtom';
+import { motion } from 'framer-motion';
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
@@ -61,12 +62,18 @@ function MenuPizza() {
   }, [userId, prilohy, setUserId, setPrilohy]);
 
   return (
-    <div className="flex flex-col justify-center w-full space-y-10">
-      <h1 className="flex justify-center font-bold text-2xl text-white">Pizza</h1>
-      <div className="w-full rounded-2xl bg-base-content shadow-lg shadow-neutral-content/25">
+    <motion.div
+      key="bageta"
+      exit={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="flex flex-col justify-center w-full space-y-10"
+    >
+      <h1 className="flex justify-center text-2xl font-bold text-white">Pizza</h1>
+      <div className="w-full shadow-lg rounded-2xl bg-base-content shadow-neutral-content/25">
         <div className="m-5">
           <div className="flex flex-col space-y-5">
-            <div className="btn-group justify-center">
+            <div className="justify-center btn-group">
               <button
                 className={`btn btn-sm ${pizzaSize === '32cm' && 'btn-active'}`}
                 onClick={() => setPizzaSize('32cm')}
@@ -89,13 +96,13 @@ function MenuPizza() {
                 />
               </div>
             ))}
-            <p className="text-base-100/70 text-xs">
+            <p className="text-xs text-base-100/70">
               * Krabica + balné v hodnote {pizzaSize === '32cm' ? '0.40' : '1.20'} €
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 export default MenuPizza;

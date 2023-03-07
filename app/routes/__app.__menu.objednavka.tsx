@@ -6,6 +6,7 @@ import ObjednavkaSummary from '~/components/ObjednavkaSummary';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+import ObjednavkaKontaktInfo from '~/components/ObjednavkaKontaktInfo';
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
@@ -188,18 +189,32 @@ export async function action({ request }: ActionArgs) {
   return null;
 }
 
-export type LoaderData = SerializeFrom<typeof loader>;
+export interface LoaderData extends SerializeFrom<typeof loader> {
+  goToContactInfo: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 function Objednavka() {
   const { objednavka, totalPrice } = useLoaderData<typeof loader>();
-  return (
+  const [isSummaryOpen, setIsSummaryOpen] = React.useState<boolean>(true);
+  return isSummaryOpen ? (
     <motion.div
-      className="w-full flex"
+      className="flex w-full"
+      key="summary"
+      exit={{ opacity: 0, scale: 0.5 }}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1.5 }}
     >
-      <ObjednavkaSummary objednavka={objednavka} totalPrice={totalPrice} />
+      <ObjednavkaSummary objednavka={objednavka} totalPrice={totalPrice} goToContactInfo={setIsSummaryOpen} />
+    </motion.div>
+  ) : (
+    <motion.div
+      className="flex w-full"
+      key="contactInfo"
+      exit={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+    >
+      <ObjednavkaKontaktInfo objednavka={objednavka} totalPrice={totalPrice} goToContactInfo={setIsSummaryOpen} />
     </motion.div>
   );
 }

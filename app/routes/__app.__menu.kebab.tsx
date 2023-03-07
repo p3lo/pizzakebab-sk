@@ -6,6 +6,7 @@ import KebabItem from '~/components/KebabItem';
 import type { Kebab } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
+import { motion } from 'framer-motion';
 
 export async function loader() {
   const kebab = await db.kebab.findMany({
@@ -64,7 +65,13 @@ function KebabMenu() {
   const { kebab } = useLoaderData() as { kebab: Kebab[] };
 
   return (
-    <div className="flex flex-col justify-center w-full space-y-10">
+    <motion.div
+      key="bageta"
+      exit={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="flex flex-col justify-center w-full space-y-10"
+    >
       <h1 className="flex justify-center text-2xl font-bold text-white">Kebab</h1>
       <div className="w-full shadow-lg rounded-2xl bg-base-content shadow-neutral-content/25">
         <div className="m-5">
@@ -96,7 +103,7 @@ function KebabMenu() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
