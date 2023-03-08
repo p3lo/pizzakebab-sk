@@ -8,6 +8,8 @@ module.exports = {
       fontFamily: {
         arial: ['Arial', 'sans-serif'],
         sans: ['var(--font-sans)', ...fontFamily.sans],
+        courgette: ['Courgette', 'cursive'],
+        roboto: ['Roboto', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
