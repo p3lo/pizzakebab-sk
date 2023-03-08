@@ -1,56 +1,60 @@
 import React from 'react';
-import { AiOutlineClockCircle, AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
+import {
+  AiOutlineClockCircle,
+  AiOutlineContacts,
+  AiOutlineInfoCircle,
+  AiOutlineMail,
+  AiOutlinePhone,
+} from 'react-icons/ai';
 import { BiMap } from 'react-icons/bi';
 import { BsFacebook, BsHouse } from 'react-icons/bs';
 import { FaNetworkWired } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className="footer p-10 bg-base-300 text-base-content w-full">
+    <footer className="w-full p-10 footer bg-base-300 text-base-content">
       <div>
-        <span className="footer-title ">Otváracia doba</span>
+        <div className="flex items-center space-x-1">
+          <AiOutlineClockCircle className="footer-title " />
+          <p className="footer-title ">Otváracia doba</p>
+        </div>
         <div className="grid grid-cols-2 gap-x-4 ">
-          <div className="flex space-x-1 items-center">
-            <AiOutlineClockCircle />
-            <p className="text-sm font-semibold">Pondelok</p>
-          </div>
+          <p className="text-sm font-semibold">Pondelok</p>
+
           <p className="text-sm">10:00 - 22:00</p>
-          <div className="flex space-x-1 items-center">
-            <AiOutlineClockCircle />
-            <p className="text-sm font-semibold">Útorok</p>
-          </div>
+
+          <p className="text-sm font-semibold">Útorok</p>
+
           <p className="text-sm">10:00 - 22:00</p>
-          <div className="flex space-x-1 items-center">
-            <AiOutlineClockCircle />
-            <p className="text-sm font-semibold">Streda</p>
-          </div>
+
+          <p className="text-sm font-semibold">Streda</p>
+
           <p className="text-sm">10:00 - 22:00</p>
-          <div className="flex space-x-1 items-center">
-            <AiOutlineClockCircle />
-            <p className="text-sm font-semibold">Štvrtok</p>
-          </div>
+
+          <p className="text-sm font-semibold">Štvrtok</p>
+
           <p className="text-sm">10:00 - 22:00</p>
-          <div className="flex space-x-1 items-center">
-            <AiOutlineClockCircle />
-            <p className="text-sm font-semibold">Piatok</p>
-          </div>
+
+          <p className="text-sm font-semibold">Piatok</p>
+
           <p className="text-sm">10:00 - 23:00</p>
-          <div className="flex space-x-1 items-center">
-            <AiOutlineClockCircle />
-            <p className="text-sm font-semibold">Sobota</p>
-          </div>
+
+          <p className="text-sm font-semibold">Sobota</p>
+
           <p className="text-sm">10:00 - 23:00</p>
-          <div className="flex space-x-1 items-center">
-            <AiOutlineClockCircle />
-            <p className="text-sm font-semibold">Nedeľa</p>
-          </div>
+
+          <p className="text-sm font-semibold">Nedeľa</p>
+
           <p className="text-sm">15:00 - 23:00</p>
         </div>
       </div>
       <div>
-        <span className="footer-title">Informácie</span>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-2 items-start">
-          <div className="flex space-x-1 items-center">
+        <div className="flex items-center space-x-1">
+          <AiOutlineInfoCircle className="footer-title " />
+          <p className="footer-title">Informácie</p>
+        </div>
+        <div className="grid items-start grid-cols-2 gap-x-4 gap-y-2">
+          <div className="flex items-center space-x-1">
             <BiMap />
             <p className="text-sm font-semibold">Adresa:</p>
           </div>
@@ -63,7 +67,7 @@ function Footer() {
             <p className="text-sm">Dvory 1933/20</p>
             <p className="text-sm">Púchov, 02001</p>
           </a>
-          <div className="flex space-x-1 items-center">
+          <div className="flex items-center space-x-1">
             <BsHouse />
             <p className="text-sm font-semibold">Spoločnosť:</p>
           </div>
@@ -71,28 +75,31 @@ function Footer() {
         </div>
       </div>
       <div>
-        <span className="footer-title">Kontakt</span>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-2 items-center">
-          <div className="flex space-x-1 items-center">
+        <div className="flex items-center space-x-1">
+          <AiOutlineContacts className="footer-title " />
+          <p className="footer-title">Kontakt</p>
+        </div>
+        <div className="grid items-center grid-cols-2 gap-x-4 gap-y-2">
+          <div className="flex items-center space-x-1">
             <FaNetworkWired />
             <p className="text-sm font-semibold">Sociálne siete:</p>
           </div>
-          <a href="https://www.facebook.com/pizzakebab.sk" target="_blank" className="flex space-x-1 items-center">
+          <a href="https://www.facebook.com/pizzakebab.sk" target="_blank" className="flex items-center space-x-1">
             <BsFacebook />
             <p className="text-sm">Facebook</p>
           </a>
-          <div className="flex space-x-1 items-center">
+          <div className="flex items-center space-x-1">
             <AiOutlineMail />
             <p className="text-sm font-semibold">Email:</p>
           </div>
-          <a href="mailto: pizzakebabdvory@gmail.com" target="_blank" className="flex space-x-1 items-center">
+          <a href="mailto: pizzakebabdvory@gmail.com" target="_blank" className="flex items-center space-x-1">
             <p className="text-sm">pizzakebabdvory@gmail.com</p>
           </a>
-          <div className="flex space-x-1 items-center">
+          <div className="flex items-center space-x-1">
             <AiOutlinePhone />
             <p className="text-sm font-semibold">Telefón:</p>
           </div>
-          <a href="tel: +421 944 992 552" target="_blank" className="flex space-x-1 items-center">
+          <a href="tel: +421 944 992 552" target="_blank" className="flex items-center space-x-1">
             <p className="text-sm">+421 944 992 552</p>
           </a>
         </div>

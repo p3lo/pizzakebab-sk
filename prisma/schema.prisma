@@ -227,9 +227,85 @@ model User {
 }
 
 model Order {
-  id     Int    @id @default(autoincrement())
-  name   String
-  price  Float
-  user   User?  @relation(fields: [userId], references: [userId], onDelete: Cascade)
-  userId String @unique
+  id      Int           @id @default(autoincrement())
+  pizzas  PizzaOrder[]
+  kebabs  KebabOrder[]
+  bagetas BagetaOrder[]
+  salats  SalatOrder[]
+  drinks  DrinkOrder[]
+  others  OtherOrder[]
+  user    User?         @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  userId  String        @unique
+}
+
+model PizzaOrder {
+  id          Int                 @id @default(autoincrement())
+  name        String
+  description String
+  size        String
+  weight      Int
+  price       Float
+  order       Order?              @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     Int?
+  prilohy     PizzaOrderPriloha[]
+}
+
+model PizzaOrderPriloha {
+  id         Int         @id @default(autoincrement())
+  name       String
+  weight     Int
+  price      Float
+  pizzaOrder PizzaOrder? @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId    Int?
+}
+
+model KebabOrder {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  weight      Int
+  size        String
+  price       Float
+  Order       Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     Int?
+}
+
+model BagetaOrder {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  weight      Int
+  size        String
+  price       Float
+  Order       Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     Int?
+}
+
+model SalatOrder {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  weight      Int
+  price       Float
+  Order       Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     Int?
+}
+
+model DrinkOrder {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  Order       Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     Int?
+}
+
+model OtherOrder {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  weight      Int
+  price       Float
+  Order       Order? @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     Int?
 }

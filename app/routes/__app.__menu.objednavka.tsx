@@ -187,12 +187,124 @@ export async function action({ request }: ActionArgs) {
     }
   }
   if (formData.get('intent') === 'formular') {
+    const objednavka = formData.get('objednavka');
+    const meno = formData.get('meno');
+    const priezvisko = formData.get('priezvisko');
+    const address = formData.get('address');
+    const mesto = formData.get('mesto');
+    const email = formData.get('email');
+    const phone = '+421' + formData.get('phone');
+    if (objednavka) {
+      const orderParsed = JSON.parse(objednavka as string);
+      const newOrder = {
+        ...orderParsed,
+        pizzas: orderParsed.pizzas.map(
+          ({ id, cartId, prilohy, ...rest }: { id: number; cartId: number; prilohy: any[] }) => {
+            if (prilohy) {
+              const newPrilohy = prilohy.map(({ id, cartId, ...prilohaRest }) => prilohaRest);
+              return {
+                ...rest,
+                prilohy: newPrilohy,
+              };
+            } else {
+              return rest;
+            }
+          }
+        ),
+        kebabs: orderParsed.kebabs.map(({ id, cartId, ...rest }: { id: number; cartId: number }) => rest),
+        bagetas: orderParsed.bagetas.map(({ id, cartId, ...rest }: { id: number; cartId: number }) => rest),
+        salats: orderParsed.salats.map(({ id, cartId, ...rest }: { id: number; cartId: number }) => rest),
+        drinks: orderParsed.drinks.map(({ id, cartId, ...rest }: { id: number; cartId: number }) => rest),
+        others: orderParsed.others.map(({ id, cartId, ...rest }: { id: number; cartId: number }) => rest),
+      };
+
+      await db.order.create({
+        data: {
+          userId: userId,
+          pizzas: {
+            create: newOrder.pizzas.map((pizza: any) => ({
+              name: pizza.name,
+              description: pizza.description,
+              size: pizza.size,
+              weight: pizza.weight,
+              price: pizza.price,
+              prilohy: {
+                create: pizza.prilohy.map((priloha: any) => ({
+                  name: priloha.name,
+                  weight: priloha.weight,
+                  price: priloha.price,
+                })),
+              },
+            })),
+          },
+          kebabs: {
+            create: newOrder.kebabs.map((kebab: any) => ({
+              name: kebab.name,
+              description: kebab.description,
+              size: kebab.size,
+              weight: kebab.weight,
+              price: kebab.price,
+            })),
+          },
+          bagetas: {
+            create: newOrder.bagetas.map((bageta: any) => ({
+              name: bageta.name,
+              description: bageta.description,
+              size: bageta.size,
+              weight: bageta.weight,
+              price: bageta.price,
+            })),
+          },
+          salats: {
+            create: newOrder.salats.map((salat: any) => ({
+              name: salat.name,
+              description: salat.description,
+              size: salat.size,
+              weight: salat.weight,
+              price: salat.price,
+            })),
+          },
+          drinks: {
+            create: newOrder.drinks.map((drink: any) => ({
+              name: drink.name,
+              description: drink.description,
+              size: drink.size,
+              weight: drink.weight,
+              price: drink.price,
+            })),
+          },
+          others: {
+            create: newOrder.others.map((other: any) => ({
+              name: other.name,
+              description: other.description,
+              size: other.size,
+              weight: other.weight,
+              price: other.price,
+            })),
+          },
+        },
+      });
+    }
+
+    await db.user.update({
+      where: {
+        userId: userId,
+      },
+      data: {
+        name: meno?.toString(),
+        surname: priezvisko?.toString(),
+        address: address?.toString(),
+        city: mesto?.toString(),
+        email: email?.toString(),
+        phone: phone.toString(),
+      },
+    });
+
     await db.cart.delete({
       where: {
         userId: userId,
       },
     });
-    console.log('🚀 ~ file: __app.__menu.objednavka.tsx:173 ~ action ~ formData:', formData);
   }
   return null;
 }

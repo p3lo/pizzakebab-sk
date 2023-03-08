@@ -76,7 +76,7 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
               <input
                 required
                 type="text"
-                name="adress"
+                name="address"
                 placeholder="Vaša ulica + číslo domu"
                 className="w-full input border-base-100 input-bordered bg-base-content text-base-100 placeholder-base-100/50"
               />
