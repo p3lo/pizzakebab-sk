@@ -1,11 +1,17 @@
 import { useFetcher } from '@remix-run/react';
 import React from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useToast } from '~/hooks/ui/use-toast';
 import type { Novinky } from '~/types/types';
 
 function NovinkyItem({ novinky, novinkyIndex }: { novinky: Novinky; novinkyIndex: number }) {
   const fetcher = useFetcher();
+  const { toast } = useToast();
   function addToCart() {
+    toast({
+      title: 'Produkt bol pridaný do košíka:',
+      description: novinky.name,
+    });
     const novinkyDb = {
       name: novinky.name,
       description: novinky.description,

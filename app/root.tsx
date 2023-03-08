@@ -3,9 +3,11 @@ import type { ActionArgs, LinksFunction, LoaderArgs, MetaFunction } from '@remix
 import { redirect } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 import { useAtomValue } from 'jotai';
+import { ClientOnly } from 'remix-utils';
 import KebabDrawer from './components/KebabDrawer';
 import MainMenuDrawer from './components/MainMenuDrawer';
 import PizzaDrawer from './components/PizzaDrawer';
+import { Toaster } from './components/ui/toaster';
 import styles from './tailwind.css';
 import { db } from './utils/db.server';
 import { drawerAtom } from './utils/drawerAtom';
@@ -139,7 +141,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-arial">
         <div className="drawer drawer-end">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
@@ -152,6 +154,9 @@ export default function App() {
             {drawerType === 'kebab' && <KebabDrawer />}
             {drawerType === 'menu' && <MainMenuDrawer />}
           </div>
+        </div>
+        <div data-theme="dark">
+          <ClientOnly>{() => <Toaster />}</ClientOnly>
         </div>
         <ScrollRestoration />
         <Scripts />

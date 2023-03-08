@@ -5,6 +5,7 @@ import { AiOutlineShoppingCart, AiOutlineCloseSquare } from 'react-icons/ai';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { BsTrash } from 'react-icons/bs';
 import { useFetcher } from '@remix-run/react';
+import { useToast } from '~/hooks/ui/use-toast';
 
 function PizzaDrawer() {
   const pizza = useAtomValue(drawerPizzaAtom);
@@ -15,6 +16,7 @@ function PizzaDrawer() {
   const [selectPriloha, setSelectPriloha] = React.useState<number | null>(null);
 
   const fetcher = useFetcher();
+  const { toast } = useToast();
 
   function getSumPrice() {
     const sum = pizza.price + (pizza.size === '32cm' ? 0.4 : 1.2);
@@ -38,6 +40,10 @@ function PizzaDrawer() {
   }
 
   function addToCart() {
+    toast({
+      title: 'Produkt bol pridaný do košíka:',
+      description: pizza.name,
+    });
     setVybranePrilohy([]);
     if (userId) {
       fetcher.submit(

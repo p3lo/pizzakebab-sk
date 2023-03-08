@@ -3,6 +3,7 @@ import { useSetAtom } from 'jotai';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Kebab } from '~/types/types';
 import { drawerAtom, drawerKebabAtom } from '~/utils/drawerAtom';
+import { useToast } from '~/hooks/ui/use-toast';
 
 function KebabItem({
   kebab,
@@ -16,6 +17,7 @@ function KebabItem({
   const setKebab = useSetAtom(drawerKebabAtom);
   const setDrawerType = useSetAtom(drawerAtom);
   const fetcher = useFetcher();
+  const { toast } = useToast();
   function setKebabAtom() {
     const weight = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.weight : kebab.sizeLarge?.weight;
     const price = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.price : kebab.sizeLarge?.price;
@@ -31,6 +33,10 @@ function KebabItem({
     setDrawerType('kebab');
   }
   function addToCart() {
+    toast({
+      title: 'Produkt bol pridaný do košíka:',
+      description: kebab.name,
+    });
     const weight = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.weight : kebab.sizeLarge?.weight;
     const price = kebabSize === 'sizeSmall' ? kebab.sizeSmall?.price : kebab.sizeLarge?.price;
     const size = kebabSize === 'sizeSmall' ? 'klasik' : 'XXL';

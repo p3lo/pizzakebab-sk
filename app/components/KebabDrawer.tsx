@@ -3,6 +3,7 @@ import { useAtomValue } from 'jotai';
 import React from 'react';
 import { AiOutlineCloseSquare, AiOutlineShoppingCart } from 'react-icons/ai';
 import { drawerKebabAtom, userIdAtom } from '~/utils/drawerAtom';
+import { useToast } from '~/hooks/ui/use-toast';
 
 function KebabDrawer() {
   const kebab = useAtomValue(drawerKebabAtom);
@@ -10,9 +11,14 @@ function KebabDrawer() {
 
   const [selectPriloha, setSelectPriloha] = React.useState<number>(1);
   const fetcher = useFetcher();
+  const { toast } = useToast();
 
   function addToCart() {
     if (userId) {
+      toast({
+        title: 'Produkt bol pridaný do košíka:',
+        description: kebab.name,
+      });
       if (selectPriloha === 1) {
         kebab.description = kebab.description.replace('Hranolky/ryža', 'Hranolky');
       } else {

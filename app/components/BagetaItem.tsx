@@ -1,6 +1,7 @@
 import { useFetcher } from '@remix-run/react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import type { Bageta } from '~/types/types';
+import { useToast } from '~/hooks/ui/use-toast';
 
 function BagetaItem({
   bageta,
@@ -12,7 +13,12 @@ function BagetaItem({
   bagetaIndex: number;
 }) {
   const fetcher = useFetcher();
+  const { toast } = useToast();
   function addToCart() {
+    toast({
+      title: 'Produkt bol pridaný do košíka:',
+      description: bageta.name,
+    });
     const weight = bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.weight : bageta.sizeLarge?.weight;
     const price = bagetaSize === 'sizeSmall' ? bageta.sizeSmall?.price : bageta.sizeLarge?.price;
     const size = bagetaSize === 'sizeSmall' ? 'mala' : 'velka';
