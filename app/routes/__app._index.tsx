@@ -45,7 +45,7 @@ export default function Index() {
               dorazí k vám čerstvé a horúce, ako keby ste ho mali pripraviť sami.
             </p>
             <p className="indent-4">
-              Takže, ak hľadáte autentickú taliansku pizzu, prichádzajte navštíviť nás. Užite si jedinečnú chuť našich
+              Takže, ak hľadáte autentickú taliansku pizzu, príjdite navštíviť nás. Užite si jedinečnú chuť našich
               špecialít, vychutnajte si uvoľnenú atmosféru a pridajte sa k našej rodine spokojných zákazníkov. Tešíme sa
               či už na vašu návštevu alebo objednávku!
             </p>
