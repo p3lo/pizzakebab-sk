@@ -1,9 +1,13 @@
+import { useFetcher } from '@remix-run/react';
 import React from 'react';
 import { AiOutlineRollback } from 'react-icons/ai';
+import { useToast } from '~/hooks/ui/use-toast';
 import type { LoaderData } from '~/routes/__app.__menu.objednavka';
 
 function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: LoaderData) {
   const [city, setCity] = React.useState('1');
+  const fetcher = useFetcher();
+  const { toast } = useToast();
 
   function getStringForCitySelect() {
     const getCityObject = doprava.find((cityObj) => cityObj.id.toString() === city);
@@ -37,7 +41,7 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
         >
           <AiOutlineRollback className="w-5 h-5 font-bold text-base-100" />
         </button>
-        <div className="mx-5 mb-5">
+        <fetcher.Form method="post" className="mx-5 mb-5">
           <div className="flex flex-col space-y-2">
             <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
               <div className="w-full form-control">
@@ -47,6 +51,7 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
                 <input
                   required
                   type="text"
+                  name="meno"
                   placeholder="Vaše meno"
                   className="w-full input border-base-100 input-bordered bg-base-content text-base-100 placeholder-base-100/50"
                 />
@@ -58,6 +63,7 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
                 <input
                   required
                   type="text"
+                  name="priezvisko"
                   placeholder="Vaše priezvisko"
                   className="w-full input border-base-100 input-bordered bg-base-content text-base-100 placeholder-base-100/50"
                 />
@@ -70,6 +76,7 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
               <input
                 required
                 type="text"
+                name="adress"
                 placeholder="Vaša ulica + číslo domu"
                 className="w-full input border-base-100 input-bordered bg-base-content text-base-100 placeholder-base-100/50"
               />
@@ -101,6 +108,7 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
                 <span>Email</span>
                 <input
                   type="email"
+                  name="email"
                   placeholder="jozko.mrkvicka@gmail.com"
                   className="w-full input border-base-100 input-bordered bg-base-content text-base-100 placeholder-base-100/50"
                 />
@@ -117,10 +125,17 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
                   placeholder="903666999"
                   pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
                   maxLength={9}
+                  name="phone"
                   className="w-full input border-base-100 input-bordered bg-base-content text-base-100 placeholder-base-100/50"
                 />
               </label>
             </div>
+            <input type="hidden" name="objednavka" value={JSON.stringify(objednavka)} />
+            <input
+              type="hidden"
+              name="mesto"
+              value={doprava.find((cityObj) => cityObj.id.toString() === city)?.city!}
+            />
             <div className="flex justify-center pt-5">
               {doprava.find((cityObj) => cityObj.id.toString() === city)?.minObjednavka! > totalPrice ? (
                 <p className="text-xs text-error">
@@ -133,13 +148,24 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
                   €
                 </p>
               ) : (
-                <button className="btn btn-primary" onClick={() => goToContactInfo(false)}>
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                  name="intent"
+                  value="formular"
+                  onClick={() => {
+                    toast({
+                      title: 'Vaša objednávka bola úspešne vytvorená',
+                      description: 'Objednávka bude potvrdená v emaily.',
+                    });
+                  }}
+                >
                   Odoslať Objednávku
                 </button>
               )}
             </div>
           </div>
-        </div>
+        </fetcher.Form>
       </div>
     </div>
   );

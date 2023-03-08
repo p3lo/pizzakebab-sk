@@ -186,6 +186,14 @@ export async function action({ request }: ActionArgs) {
       });
     }
   }
+  if (formData.get('intent') === 'formular') {
+    await db.cart.delete({
+      where: {
+        userId: userId,
+      },
+    });
+    console.log('🚀 ~ file: __app.__menu.objednavka.tsx:173 ~ action ~ formData:', formData);
+  }
   return null;
 }
 

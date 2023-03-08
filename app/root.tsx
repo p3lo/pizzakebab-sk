@@ -1,8 +1,8 @@
-import type { ActionArgs, LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
-
+import { ActionArgs, json, LinksFunction, LoaderArgs, MetaFunction } from '@remix-run/node';
+import React from 'react';
 import { redirect } from '@remix-run/node';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { useAtomValue } from 'jotai';
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { ClientOnly } from 'remix-utils';
 import KebabDrawer from './components/KebabDrawer';
 import MainMenuDrawer from './components/MainMenuDrawer';
@@ -10,7 +10,7 @@ import PizzaDrawer from './components/PizzaDrawer';
 import { Toaster } from './components/ui/toaster';
 import styles from './tailwind.css';
 import { db } from './utils/db.server';
-import { drawerAtom } from './utils/drawerAtom';
+import { drawerAtom, userIdAtom } from './utils/drawerAtom';
 import { commitSession, getCreateUserSession, getUserId } from './utils/session.server';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
@@ -44,7 +44,7 @@ export async function loader({ request }: LoaderArgs) {
     });
   }
 
-  return null;
+  return json({ userId });
 }
 
 export async function action({ request }: ActionArgs) {
@@ -135,6 +135,11 @@ export async function action({ request }: ActionArgs) {
 
 export default function App() {
   const drawerType = useAtomValue(drawerAtom);
+  const { userId } = useLoaderData();
+  const setUserId = useSetAtom(userIdAtom);
+  React.useEffect(() => {
+    setUserId(userId);
+  }, [userId]);
   return (
     <html lang="en" data-theme="bumblebee">
       <head>

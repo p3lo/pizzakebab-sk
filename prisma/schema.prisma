@@ -214,7 +214,22 @@ model OtherCart {
 }
 
 model User {
+  id      Int     @id @default(autoincrement())
+  userId  String  @unique
+  name    String?
+  surname String?
+  address String?
+  city    String?
+  email   String?
+  phone   String?
+  cart    Cart[]
+  orders  Order[]
+}
+
+model Order {
   id     Int    @id @default(autoincrement())
+  name   String
+  price  Float
+  user   User?  @relation(fields: [userId], references: [userId], onDelete: Cascade)
   userId String @unique
-  orders Cart[]
 }
