@@ -1,12 +1,13 @@
 import type { ActionArgs, LoaderArgs, SerializeFrom } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+import { useActionData, useLoaderData } from '@remix-run/react';
 import React from 'react';
 import ObjednavkaSummary from '~/components/ObjednavkaSummary';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
 import ObjednavkaKontaktInfo from '~/components/ObjednavkaKontaktInfo';
+import { useToast } from '~/hooks/ui/use-toast';
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
@@ -71,7 +72,27 @@ export async function loader({ request }: LoaderArgs) {
 export async function action({ request }: ActionArgs) {
   const userId = await getUserId(request);
   if (!userId) return redirect('/');
+  const cloudflareSecret = process.env.CLOUDFLARE_SECRET;
+  const endpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
   const formData = await request.formData();
+  const token = formData.get('cf-turnstile-response');
+
+  if (token && cloudflareSecret) {
+    const body = `secret=${encodeURIComponent(cloudflareSecret?.toString())}&response=${encodeURIComponent(
+      token.toString()
+    )}`;
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      body,
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+    });
+    const data = await res.json();
+    if (data && !data.success) {
+      return json({ error: true });
+    }
+  }
   if (formData.get('intent') === 'other') {
     const otherId = formData.get('otherId');
     if (otherId) {
@@ -91,7 +112,6 @@ export async function action({ request }: ActionArgs) {
   }
   if (formData.get('intent') === 'pizza') {
     const pizzaId = formData.get('pizzaId');
-    console.log('🚀 ~ file: __app.__menu.objednavka.tsx:92 ~ action ~ pizzaId:', pizzaId);
     if (pizzaId) {
       await db.cart.update({
         where: {
@@ -136,7 +156,6 @@ export async function action({ request }: ActionArgs) {
   }
   if (formData.get('intent') === 'bageta') {
     const bagetaId = formData.get('bagetaId');
-    console.log('🚀 ~ file: __app.__menu.objednavka.tsx:137 ~ action ~ bagetaId:', bagetaId);
     if (bagetaId) {
       await db.cart.update({
         where: {
@@ -299,16 +318,15 @@ export async function action({ request }: ActionArgs) {
         phone: phone.toString(),
       },
     });
-
     await db.cart.delete({
       where: {
         userId: userId,
       },
     });
+    return json({ error: false });
   }
   return null;
 }
-
 export interface LoaderData extends SerializeFrom<typeof loader> {
   goToContactInfo: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -316,6 +334,7 @@ export interface LoaderData extends SerializeFrom<typeof loader> {
 function Objednavka() {
   const { objednavka, totalPrice } = useLoaderData<typeof loader>();
   const [isSummaryOpen, setIsSummaryOpen] = React.useState<boolean>(true);
+
   return isSummaryOpen ? (
     <motion.div
       className="flex w-full"

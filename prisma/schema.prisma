@@ -235,7 +235,7 @@ model Order {
   drinks  DrinkOrder[]
   others  OtherOrder[]
   user    User?         @relation(fields: [userId], references: [userId], onDelete: Cascade)
-  userId  String        @unique
+  userId  String
 }
 
 model PizzaOrder {

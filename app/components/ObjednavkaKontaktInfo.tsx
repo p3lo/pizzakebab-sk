@@ -1,3 +1,4 @@
+import { Turnstile } from '@marsidev/react-turnstile';
 import { useFetcher } from '@remix-run/react';
 import React from 'react';
 import { AiOutlineRollback } from 'react-icons/ai';
@@ -7,7 +8,21 @@ import type { LoaderData } from '~/routes/__app.__menu.objednavka';
 function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: LoaderData) {
   const [city, setCity] = React.useState('1');
   const fetcher = useFetcher();
+
+  const [statusCF, setStatusCF] = React.useState(false);
   const { toast } = useToast();
+
+  React.useEffect(() => {
+    if (fetcher.data) {
+      if (fetcher.data.error === true) {
+        toast({
+          variant: 'destructive',
+          title: 'Niečo sa pokazilo.',
+          description: 'Skúste resfreshnuť stránku a urobiť objednávku znova.',
+        });
+      }
+    }
+  }, [fetcher.data]);
 
   function getStringForCitySelect() {
     const getCityObject = doprava.find((cityObj) => cityObj.id.toString() === city);
@@ -136,6 +151,9 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
               name="mesto"
               value={doprava.find((cityObj) => cityObj.id.toString() === city)?.city!}
             />
+            <div className="flex justify-center">
+              <Turnstile siteKey="0x4AAAAAAADDnQB5T9SjxG2Y" onSuccess={() => setStatusCF(true)} />
+            </div>
             <div className="flex justify-center pt-5">
               {doprava.find((cityObj) => cityObj.id.toString() === city)?.minObjednavka! > totalPrice ? (
                 <p className="text-xs text-error">
@@ -149,14 +167,14 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
                 </p>
               ) : (
                 <button
-                  className="btn btn-primary"
+                  className={`btn btn-primary ${!statusCF && 'loading'}`}
                   type="submit"
                   name="intent"
                   value="formular"
                   onClick={() => {
                     toast({
                       title: 'Vaša objednávka bola úspešne vytvorená',
-                      description: 'Objednávka bude potvrdená v emaily.',
+                      description: 'Objednávka bude potvrdená v emaile.',
                     });
                   }}
                 >
