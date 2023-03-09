@@ -37,10 +37,7 @@ COPY --from=deps /app/node_modules /app/node_modules
 ADD prisma .
 RUN npx prisma generate
 
-ENV DATABASE_URL=file:./dev.db
-
-RUN npx prisma db pull
-RUN npx prisma migrate deploy
+#RUN npx prisma migrate deploy
 
 ADD . .
 #RUN node --require esbuild-register prisma/seed.ts
@@ -49,6 +46,7 @@ RUN npm run build
 # Finally, build the production image with minimal footprint
 FROM base
 
+ENV DATABASE_URL=file:./dev.db
 ENV NODE_ENV=production
 
 RUN mkdir /app
@@ -61,8 +59,8 @@ COPY --from=build /app/node_modules/.prisma /app/node_modules/.prisma
 
 COPY --from=build /app/build /app/build
 COPY --from=build /app/public /app/public
+COPY --from=build /app/package.json /app/package.json
+COPY --from=build /app/start.sh /app/start.sh
 COPY --from=build /app/prisma /app/prisma
 
-ADD . .
-
-CMD ["npm", "start"]
+ENTRYPOINT [ "./start.sh" ]
