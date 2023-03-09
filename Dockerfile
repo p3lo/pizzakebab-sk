@@ -35,11 +35,12 @@ COPY --from=deps /app/node_modules /app/node_modules
 
 # If we're using Prisma, uncomment to cache the prisma schema
 ADD prisma .
-RUN npx prisma generate
+#RUN npx prisma generate
 
 ENV DATABASE_URL=file:./dev.db
 
-RUN npx prisma migrate deploy
+#RUN npx prisma migrate deploy
+RUN npx prisma db push
 
 ADD . .
 RUN node --require esbuild-register prisma/seed.ts
