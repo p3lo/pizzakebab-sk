@@ -110,7 +110,7 @@ function PizzaDrawer() {
           </div>
           <div className="flex w-full border-b border-base-100" />
           <h2 className="flex justify-center w-full text-lg font-semibold">Prílohy na pizzu</h2>
-          <div className="flex w-full space-x-3">
+          <div className="flex flex-col w-full space-y-2 md:flex-row md:space-x-3 md:space-y-0">
             <select
               className="w-full max-w-xs select shrink-0 select-bordered border-base-100 bg-base-content"
               onChange={(e) => setSelectPriloha(Number(e.target.value))}
