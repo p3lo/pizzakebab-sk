@@ -7,6 +7,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
+    "setup": "prisma generate && prisma migrate deploy && prisma db seed",
     "start": "remix-serve build",
     "typecheck": "tsc"
   },
