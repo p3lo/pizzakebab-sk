@@ -141,7 +141,7 @@ ${objednavka.pizzas.map((pizza: any) => {
 <tr>
 <td align="left" style="padding:0;Margin:0"><p class="p_name" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px"><strong>${
     pizza.name
-  }</strong> ( ${pizza.size} )</p></td>
+  }</strong> (${pizza.size})</p></td>
 </tr>
 </table></td>
 </tr>
@@ -153,9 +153,9 @@ ${objednavka.pizzas.map((pizza: any) => {
 <td align="left" style="padding:0;Margin:0;width:68px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">( ${
+<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">(${
     pizza.weight
-  }g )</p></td>
+  }g)</p></td>
 </tr>
 </table></td>
 </tr>
@@ -169,7 +169,7 @@ ${objednavka.pizzas.map((pizza: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${pizza.price.toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -218,9 +218,9 @@ ${pizza.prilohy.map((priloha: any) => {
 <td align="left" style="padding:0;Margin:0;width:68px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">( ${
+<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">(${
     priloha.weight
-  }g )</p></td>
+  }g)</p></td>
 </tr>
 </table></td>
 </tr>
@@ -234,7 +234,7 @@ ${pizza.prilohy.map((priloha: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${priloha.price.toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -279,7 +279,7 @@ ${pizza.prilohy.map((priloha: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${
     pizza.size === '32cm' ? (0.4).toFixed(2) : (1.2).toFixed(2)
-  } €</p></td>
+  }€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -321,7 +321,7 @@ ${objednavka.kebabs.map((kebab: any) => {
 <tr>
 <td align="left" style="padding:0;Margin:0"><p class="p_name" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px"><strong>${
     kebab.name
-  }</strong> ( ${kebab.size} )</p></td>
+  }</strong> (${kebab.size})</p></td>
 </tr>
 </table></td>
 </tr>
@@ -333,9 +333,9 @@ ${objednavka.kebabs.map((kebab: any) => {
 <td align="left" style="padding:0;Margin:0;width:68px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">( ${
+<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">(${
     kebab.weight
-  }g )</p></td>
+  }g)</p></td>
 </tr>
 </table></td>
 </tr>
@@ -349,7 +349,7 @@ ${objednavka.kebabs.map((kebab: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${kebab.price.toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -407,7 +407,7 @@ ${objednavka.kebabs.map((kebab: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${(0.4).toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -449,7 +449,7 @@ ${objednavka.bagetas.map((bageta: any) => {
 <tr>
 <td align="left" style="padding:0;Margin:0"><p class="p_name" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px"><strong>${
     bageta.name
-  }</strong> ( ${bageta.size} )</p></td>
+  }</strong> (${bageta.size})</p></td>
 </tr>
 </table></td>
 </tr>
@@ -461,9 +461,9 @@ ${objednavka.bagetas.map((bageta: any) => {
 <td align="left" style="padding:0;Margin:0;width:68px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">( ${
+<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">(${
     bageta.weight
-  }g )</p></td>
+  }g)</p></td>
 </tr>
 </table></td>
 </tr>
@@ -477,7 +477,7 @@ ${objednavka.bagetas.map((bageta: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${bageta.price.toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -546,9 +546,9 @@ ${objednavka.salats.map((salat: any) => {
 <td align="left" style="padding:0;Margin:0;width:68px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">( ${
+<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">(${
     salat.weight
-  }g )</p></td>
+  }g)</p></td>
 </tr>
 </table></td>
 </tr>
@@ -562,7 +562,7 @@ ${objednavka.salats.map((salat: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${salat.price.toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -620,7 +620,7 @@ ${objednavka.salats.map((salat: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${(0.4).toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -687,7 +687,7 @@ ${objednavka.drinks.map((drink: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${drink.price.toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -745,7 +745,7 @@ ${objednavka.drinks.map((drink: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${(0.15).toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -799,9 +799,9 @@ ${objednavka.others.map((other: any) => {
 <td align="left" style="padding:0;Margin:0;width:68px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">( ${
+<td align="right" style="padding:0;Margin:0"><p class="p_price" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">(${
     other.weight
-  }g )</p></td>
+  }g)</p></td>
 </tr>
 </table></td>
 </tr>
@@ -815,7 +815,7 @@ ${objednavka.others.map((other: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${other.price.toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -858,7 +858,7 @@ ${objednavka.others.map((other: any) => {
 <tr>
 <td align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">${(0.3).toFixed(
     2
-  )} €</p></td>
+  )}€</p></td>
 </tr>
 </table></td>
 </tr>
@@ -953,7 +953,7 @@ ${objednavka.others.map((other: any) => {
 <tr>
 <td align="right" class="es-m-txt-r" style="padding:0;Margin:0"><h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:24px;font-style:normal;font-weight:bold;color:#377771">${totalPrice.toFixed(
     2
-  )} €</h2></td>
+  )}€</h2></td>
 </tr>
 </table></td>
 </tr>
