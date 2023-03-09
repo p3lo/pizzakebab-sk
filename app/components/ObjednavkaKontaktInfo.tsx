@@ -146,6 +146,12 @@ function ObjednavkaKontaktInfo({ objednavka, totalPrice, goToContactInfo }: Load
               </label>
             </div>
             <input type="hidden" name="objednavka" value={JSON.stringify(objednavka)} />
+            <input type="hidden" name="totalPrice" value={totalPrice} />
+            <input
+              type="hidden"
+              name="doprava"
+              value={doprava.find((cityObj) => cityObj.id.toString() === city)?.doprava!}
+            />
             <input
               type="hidden"
               name="mesto"

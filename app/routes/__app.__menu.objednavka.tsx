@@ -1,13 +1,16 @@
 import type { ActionArgs, LoaderArgs, SerializeFrom } from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
-import { useActionData, useLoaderData } from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 import React from 'react';
 import ObjednavkaSummary from '~/components/ObjednavkaSummary';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
 import ObjednavkaKontaktInfo from '~/components/ObjednavkaKontaktInfo';
-import { useToast } from '~/hooks/ui/use-toast';
+import email from '~/utils/email.server';
+import emailServer from '~/utils/email.server';
+import invariant from 'tiny-invariant';
+import { makeEmail } from '~/utils/makeEmail';
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
@@ -213,6 +216,8 @@ export async function action({ request }: ActionArgs) {
     const mesto = formData.get('mesto');
     const email = formData.get('email');
     const phone = '+421' + formData.get('phone');
+    const totalPrice = formData.get('totalPrice');
+    const doprava = formData.get('doprava');
     if (objednavka) {
       const orderParsed = JSON.parse(objednavka as string);
       const newOrder = {
@@ -318,11 +323,45 @@ export async function action({ request }: ActionArgs) {
         phone: phone.toString(),
       },
     });
+    invariant(email, 'Email is required');
+    invariant(phone, 'Phone is required');
+    invariant(address, 'Address is required');
+    invariant(mesto, 'City is required');
+    invariant(meno, 'Name is required');
+    invariant(priezvisko, 'Surname is required');
+    invariant(objednavka, 'Objednavka is required');
+    invariant(totalPrice, 'Total price is required');
+    invariant(doprava, 'Doprava is required');
+    const orderParsed = JSON.parse(objednavka as string);
+    const emailMessage = makeEmail(
+      orderParsed,
+      phone,
+      address.toString(),
+      mesto.toString(),
+      priezvisko.toString(),
+      meno.toString(),
+      Number(totalPrice),
+      Number(doprava)
+    );
+    emailServer.sendSmtpEmail.subject = 'Objednávka z Pizza & Kebab';
+    emailServer.sendSmtpEmail.htmlContent = `${emailMessage}`;
+    emailServer.sendSmtpEmail.sender = { name: 'Pizza & Kebab', email: 'mysiacik@mysiacik.com' };
+    emailServer.sendSmtpEmail.to = [
+      { email: email?.toString(), name: meno?.toString() + ' ' + priezvisko?.toString() },
+    ];
+    emailServer.sendSmtpEmail.cc = [{ email: 'mysiacik@mysiacik.com', name: 'Pizza & Kebab' }];
+    emailServer.sendSmtpEmail.replyTo = { email: 'pizzakebabdvory@gmail.com', name: 'Pizza & Kebab' };
+
+    emailServer.emailAPi.sendTransacEmail(emailServer.sendSmtpEmail).then(
+      (data) => {},
+      (err) => {}
+    );
     await db.cart.delete({
       where: {
         userId: userId,
       },
     });
+
     return json({ error: false });
   }
   return null;
