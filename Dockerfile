@@ -39,6 +39,9 @@ RUN npx prisma generate
 
 ENV DATABASE_URL=file:./dev.db
 
+RUN npx prisma migrate deploy
+RUN node --require esbuild-register prisma/seed.ts
+
 ADD . .
 RUN npm run build
 
