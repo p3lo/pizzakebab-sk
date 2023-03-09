@@ -36,7 +36,7 @@ function KebabDrawer() {
     }
   }
   return (
-    <div className="p-4 w-[500px] bg-base-content text-base-300">
+    <div className="p-4 w-[320px] md:w-[500px] bg-base-content text-base-300">
       <div className="flex flex-col justify-between w-full h-full">
         <div className="flex flex-col space-y-5">
           <div className="flex flex-col">
