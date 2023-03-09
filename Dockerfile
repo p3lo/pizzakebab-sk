@@ -37,6 +37,8 @@ COPY --from=deps /app/node_modules /app/node_modules
 ADD prisma .
 RUN npx prisma generate
 
+ENV DATABASE_URL=file:./dev.db
+
 ADD . .
 RUN npm run build
 
