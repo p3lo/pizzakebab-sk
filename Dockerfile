@@ -40,13 +40,14 @@ RUN npx prisma generate
 #RUN npx prisma migrate deploy
 
 ADD . .
+ENV DATABASE_URL=file:/prisma/dev.db
 RUN node --require esbuild-register prisma/seed.ts
 RUN npm run build
 
 # Finally, build the production image with minimal footprint
 FROM base
 
-ENV DATABASE_URL=file:./dev.db
+ENV DATABASE_URL=file:/prisma/dev.db
 ENV NODE_ENV=production
 
 RUN mkdir /app
