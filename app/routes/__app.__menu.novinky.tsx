@@ -1,4 +1,4 @@
-import type { ActionArgs } from '@remix-run/node';
+import type { ActionArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import React from 'react';
@@ -7,6 +7,19 @@ import type { Novinky } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: 'Jedlá z rôznych kuchýň - Pizza & Kebab',
+    },
+    {
+      name: 'description',
+      content:
+        'Prezrite si náš rozsiahly výber jedál, ktoré ponúkame v našej pizzerii Pizza & Kebab. Vyberte si z rôznych druhov jedál z rôznych kuchýň vrátane hamburgerov, rebierok a ďalších.',
+    },
+  ];
+};
 
 export async function loader() {
   const novinky = await db.other.findMany();

@@ -4,6 +4,7 @@ module.exports = {
   future: {
     unstable_tailwind: true,
     v2_routeConvention: true,
+    v2_meta: true,
   },
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",

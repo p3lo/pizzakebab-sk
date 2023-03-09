@@ -1,4 +1,4 @@
-import type { ActionArgs } from '@remix-run/node';
+import type { ActionArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import React from 'react';
 import { useLoaderData } from 'react-router';
@@ -7,6 +7,19 @@ import type { Napoje } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: 'Nápoje - Pizza & Kebab',
+    },
+    {
+      name: 'description',
+      content:
+        'Prezrite si náš rozsiahly výber nápojov, ktoré ponúkame v našej pizzerii Pizza & Kebab. Vyberte si z rôznych druhov nápojov vrátane minerálnej vody, džúsov, limonád a ďalších.',
+    },
+  ];
+};
 
 export async function loader() {
   const napoje = await db.drink.findMany();

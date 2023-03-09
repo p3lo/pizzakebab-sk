@@ -1,6 +1,6 @@
 import React from 'react';
 import PizzaItem from '~/components/PizzaItem';
-import type { LoaderArgs } from '@remix-run/node';
+import type { LoaderArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import type { Pizza, Pizzaprilohy } from '~/types/types';
@@ -9,6 +9,19 @@ import { getUserId } from '~/utils/session.server';
 import { useSetAtom } from 'jotai';
 import { drawerPizzaPrilohyAtom, userIdAtom } from '~/utils/drawerAtom';
 import { motion } from 'framer-motion';
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: 'Menu s pizzami - Pizza & Kebab',
+    },
+    {
+      name: 'description',
+      content:
+        'Prezrite si náš rozsiahly výber pizze, ktoré ponúkame v našej pizzerii Pizza & Kebab. Vyberte si z rôznych druhov ciest s rôznymi náplňami a prílohami.',
+    },
+  ];
+};
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);

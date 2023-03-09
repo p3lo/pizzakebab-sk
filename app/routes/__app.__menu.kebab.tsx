@@ -1,4 +1,4 @@
-import type { ActionArgs } from '@remix-run/node';
+import type { ActionArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import React from 'react';
@@ -7,6 +7,19 @@ import type { Kebab } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: 'Menu s kebabom - Pizza & Kebab',
+    },
+    {
+      name: 'description',
+      content:
+        'Prezrite si náš rozsiahly výber kebabov, ktoré ponúkame v našej pizzerii. Vyberte si z rôznych druhov kebabov s rôznymi prílohami a omáčkami.',
+    },
+  ];
+};
 
 export async function loader() {
   const kebab = await db.kebab.findMany({

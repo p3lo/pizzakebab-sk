@@ -1,4 +1,4 @@
-import type { ActionArgs } from '@remix-run/node';
+import type { ActionArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import React from 'react';
@@ -7,6 +7,19 @@ import type { Bageta } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: 'Menu s bagetami - Pizza & Kebab',
+    },
+    {
+      name: 'description',
+      content:
+        'Pozrite si náš rozsiahly výber bagiet, ktoré ponúkame v našej pizzerii Pizza & Kebab. Vyberte si z rôznych druhov bagiet s rôznymi prílohami.',
+    },
+  ];
+};
 
 export async function loader() {
   const bageta = await db.bageta.findMany({

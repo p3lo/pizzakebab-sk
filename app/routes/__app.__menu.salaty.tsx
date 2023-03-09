@@ -1,4 +1,4 @@
-import type { ActionArgs } from '@remix-run/node';
+import type { ActionArgs, V2_MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import React from 'react';
@@ -7,6 +7,19 @@ import type { Salaty } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    {
+      title: 'Menu so šalátmi - Pizza & Kebab',
+    },
+    {
+      name: 'description',
+      content:
+        'Prezrite si náš rozsiahly výber šalátov, ktoré ponúkame v našej pizzerii Pizza & Kebab. Vyberte si z rôznych druhov šalátov s rôznymi zeleninovými a mäsitými prísadami.',
+    },
+  ];
+};
 
 export async function loader() {
   const salaty = await db.salat.findMany();
