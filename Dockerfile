@@ -40,7 +40,7 @@ RUN npx prisma generate
 #RUN npx prisma migrate deploy
 
 ADD . .
-#RUN node --require esbuild-register prisma/seed.ts
+RUN node --require esbuild-register prisma/seed.ts
 RUN npm run build
 
 # Finally, build the production image with minimal footprint
