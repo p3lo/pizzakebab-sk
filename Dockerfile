@@ -39,7 +39,7 @@ RUN npx prisma generate
 
 ENV DATABASE_URL=file:./dev.db
 
-RUN npx prisma migrate dev
+RUN npx prisma migrate dev --name "init"
 #RUN npx prisma db push
 
 ADD . .
