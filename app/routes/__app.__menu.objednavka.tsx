@@ -11,6 +11,7 @@ import email from '~/utils/email.server';
 import emailServer from '~/utils/email.server';
 import invariant from 'tiny-invariant';
 import { makeEmail } from '~/utils/makeEmail';
+import { useMediaQuery } from 'react-responsive';
 
 export async function loader({ request }: LoaderArgs) {
   const userId = await getUserId(request);
@@ -373,14 +374,26 @@ export interface LoaderData extends SerializeFrom<typeof loader> {
 function Objednavka() {
   const { objednavka, totalPrice } = useLoaderData<typeof loader>();
   const [isSummaryOpen, setIsSummaryOpen] = React.useState<boolean>(true);
-
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  let initial = {};
+  let animate = {};
+  if (!isMobile) {
+    initial = {
+      opacity: 0,
+      scale: 0.5,
+    };
+    animate = {
+      opacity: 1,
+      scale: 1,
+    };
+  }
   return isSummaryOpen ? (
     <motion.div
       className="flex w-full"
       key="summary"
       exit={{ opacity: 0, scale: 0.5 }}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={initial}
+      animate={animate}
     >
       <ObjednavkaSummary objednavka={objednavka} totalPrice={totalPrice} goToContactInfo={setIsSummaryOpen} />
     </motion.div>
@@ -389,8 +402,8 @@ function Objednavka() {
       className="flex w-full"
       key="contactInfo"
       exit={{ opacity: 0, scale: 0.5 }}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={initial}
+      animate={animate}
     >
       <ObjednavkaKontaktInfo objednavka={objednavka} totalPrice={totalPrice} goToContactInfo={setIsSummaryOpen} />
     </motion.div>

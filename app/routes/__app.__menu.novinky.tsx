@@ -7,6 +7,7 @@ import type { Novinky } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -70,12 +71,25 @@ export async function action({ request }: ActionArgs) {
 
 function MenuNovinky() {
   const { novinky } = useLoaderData() as { novinky: Novinky[] };
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  let initial = {};
+  let animate = {};
+  if (!isMobile) {
+    initial = {
+      opacity: 0,
+      scale: 0.5,
+    };
+    animate = {
+      opacity: 1,
+      scale: 1,
+    };
+  }
   return (
     <motion.div
       key="bageta"
       exit={{ opacity: 0, scale: 0.5 }}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={initial}
+      animate={animate}
       className="flex flex-col justify-center w-full space-y-10"
     >
       <h1 className="flex justify-center text-2xl font-bold text-base-content">Novinky</h1>

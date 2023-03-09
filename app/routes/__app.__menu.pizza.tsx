@@ -9,6 +9,7 @@ import { getUserId } from '~/utils/session.server';
 import { useSetAtom } from 'jotai';
 import { drawerPizzaPrilohyAtom, userIdAtom } from '~/utils/drawerAtom';
 import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -49,6 +50,20 @@ function MenuPizza() {
   const setUserId = useSetAtom(userIdAtom);
   const setPrilohy = useSetAtom(drawerPizzaPrilohyAtom);
 
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  let initial = {};
+  let animate = {};
+  if (!isMobile) {
+    initial = {
+      opacity: 0,
+      scale: 0.5,
+    };
+    animate = {
+      opacity: 1,
+      scale: 1,
+    };
+  }
+
   React.useEffect(() => {
     const transformedPrilohy = prilohy
       .map(({ id, name, prilohy32cm, prilohy50cm }) => {
@@ -78,8 +93,8 @@ function MenuPizza() {
     <motion.div
       key="bageta"
       exit={{ opacity: 0, scale: 0.5 }}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={initial}
+      animate={animate}
       className="flex flex-col justify-center w-full space-y-10"
     >
       <h1 className="flex justify-center text-2xl font-bold text-base-content">Pizza</h1>

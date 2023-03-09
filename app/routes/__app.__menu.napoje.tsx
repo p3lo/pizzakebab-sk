@@ -7,6 +7,7 @@ import type { Napoje } from '~/types/types';
 import { db } from '~/utils/db.server';
 import { getUserId } from '~/utils/session.server';
 import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -70,6 +71,19 @@ function MenuNapoje() {
   const { napoje } = useLoaderData() as { napoje: Napoje[] };
   const [alkoNapoje, setAlkoNapoje] = React.useState<Napoje[]>([]);
   const [nealkoNapoje, setNealkoNapoje] = React.useState<Napoje[]>([]);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  let initial = {};
+  let animate = {};
+  if (!isMobile) {
+    initial = {
+      opacity: 0,
+      scale: 0.5,
+    };
+    animate = {
+      opacity: 1,
+      scale: 1,
+    };
+  }
   React.useEffect(() => {
     const alko = napoje.filter((item) => item.type === 'alko');
     const nealko = napoje.filter((item) => item.type === 'nealko');
@@ -80,8 +94,8 @@ function MenuNapoje() {
     <motion.div
       key="bageta"
       exit={{ opacity: 0, scale: 0.5 }}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={initial}
+      animate={animate}
       className="flex flex-col justify-center w-full space-y-10"
     >
       <h1 className="flex justify-center text-2xl font-bold text-base-content">Nápoje</h1>
