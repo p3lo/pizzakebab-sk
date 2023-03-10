@@ -346,12 +346,12 @@ export async function action({ request }: ActionArgs) {
     );
     emailServer.sendSmtpEmail.subject = 'Objednávka z Pizza & Kebab';
     emailServer.sendSmtpEmail.htmlContent = `${emailMessage}`;
-    emailServer.sendSmtpEmail.sender = { name: 'Pizza & Kebab', email: 'mysiacik@mysiacik.com' };
+    emailServer.sendSmtpEmail.sender = { name: 'Pizza & Kebab', email: 'pavel.duleba@gmail.com' };
     emailServer.sendSmtpEmail.to = [
       { email: email?.toString(), name: meno?.toString() + ' ' + priezvisko?.toString() },
     ];
-    emailServer.sendSmtpEmail.cc = [{ email: 'mysiacik@mysiacik.com', name: 'Pizza & Kebab' }];
-    emailServer.sendSmtpEmail.replyTo = { email: 'pizzakebabdvory@gmail.com', name: 'Pizza & Kebab' };
+    emailServer.sendSmtpEmail.cc = [{ email: 'pavel.duleba@gmail.com', name: 'Pizza & Kebab' }];
+    emailServer.sendSmtpEmail.replyTo = { email: 'pavel.duleba@gmail.com', name: 'Pizza & Kebab' };
 
     emailServer.emailAPi.sendTransacEmail(emailServer.sendSmtpEmail).then(
       (data) => {},

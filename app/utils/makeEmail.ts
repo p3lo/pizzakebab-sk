@@ -972,7 +972,7 @@ ${objednavka.others.map((other: any) => {
 <td class="es-m-p0r" align="center" style="padding:0;Margin:0;width:560px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">S pozdravom,<br><br>Pizza &amp; Kebab<br>Dvory 1933/20<br>Púchov, 02001<br>telefón: +421 944 992 552<br>email: pizzakebabdvory@gmail.com</p></td>
+<td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';line-height:21px;color:#333333;font-size:14px">S pozdravom,<br><br>Pizza &amp; Kebab<br>Dvory 1933/20<br>Púchov, 02001<br>telefón: +421 944 992 552<br>email: pavel.duleba@gmail.com</p></td>
 </tr>
 </table></td>
 </tr>

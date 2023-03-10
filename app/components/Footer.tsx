@@ -92,8 +92,8 @@ function Footer() {
             <AiOutlineMail />
             <p className="text-sm font-semibold">Email:</p>
           </div>
-          <a href="mailto: pizzakebabdvory@gmail.com" target="_blank" className="flex items-center space-x-1">
-            <p className="text-sm">pizzakebabdvory@gmail.com</p>
+          <a href="mailto: pavel.duleba@gmail.com" target="_blank" className="flex items-center space-x-1">
+            <p className="text-sm">pavel.duleba@gmail.com</p>
           </a>
           <div className="flex items-center space-x-1">
             <AiOutlinePhone />
