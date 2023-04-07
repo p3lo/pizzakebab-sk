@@ -128,7 +128,7 @@ function getPizza() {
       description: 'Olivový olej, cesnak',
       size32cm: {
         weight: 280,
-        price: 3.1,
+        price: 3.5,
       },
       size50cm: {
         weight: 550,
@@ -140,11 +140,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, syr',
       size32cm: {
         weight: 430,
-        price: 4.5,
+        price: 5.0,
       },
       size50cm: {
         weight: 940,
-        price: 10.2,
+        price: 11.2,
       },
     },
     {
@@ -152,11 +152,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, šunka, syr',
       size32cm: {
         weight: 520,
-        price: 5.2,
+        price: 5.7,
       },
       size50cm: {
         weight: 1140,
-        price: 13.5,
+        price: 14.5,
       },
     },
     {
@@ -164,11 +164,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, šunka, šampiňóny, syr',
       size32cm: {
         weight: 550,
-        price: 5.8,
+        price: 6.3,
       },
       size50cm: {
         weight: 1200,
-        price: 14.6,
+        price: 15.6,
       },
     },
     {
@@ -176,11 +176,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, tuniak, cibuľa, syr',
       size32cm: {
         weight: 530,
-        price: 6.5,
+        price: 7.0,
       },
       size50cm: {
         weight: 1160,
-        price: 16.5,
+        price: 17.5,
       },
     },
     {
@@ -188,11 +188,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, pikantná saláma, feferóny, syr',
       size32cm: {
         weight: 530,
-        price: 5.8,
+        price: 6.3,
       },
       size50cm: {
         weight: 1160,
-        price: 14.6,
+        price: 15.6,
       },
     },
     {
@@ -200,11 +200,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, šunka 1/4, šampiňóny 1/4, kukurica 1/4, rukola 1/4, syr',
       size32cm: {
         weight: 600,
-        price: 6.8,
+        price: 7.3,
       },
       size50cm: {
         weight: 1230,
-        price: 17.2,
+        price: 18.2,
       },
     },
     {
@@ -212,11 +212,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, šunka, kukurica, vajce, syr',
       size32cm: {
         weight: 560,
-        price: 5.8,
+        price: 6.5,
       },
       size50cm: {
         weight: 1230,
-        price: 14.6,
+        price: 16.0,
       },
     },
     {
@@ -224,11 +224,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, šunka, rukola, olivový olej, syr',
       size32cm: {
         weight: 550,
-        price: 6.1,
+        price: 6.7,
       },
       size50cm: {
         weight: 1200,
-        price: 15.5,
+        price: 16.8,
       },
     },
     {
@@ -236,7 +236,7 @@ function getPizza() {
       description: 'Rajčinová omáčka, baranie rohy, kuracie mäso',
       size32cm: {
         weight: 580,
-        price: 6.9,
+        price: 7.5,
       },
       size50cm: {
         weight: 1230,
@@ -248,11 +248,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, mleté mäso, syr',
       size32cm: {
         weight: 600,
-        price: 6.5,
+        price: 7.0,
       },
       size50cm: {
         weight: 1230,
-        price: 16.8,
+        price: 17.8,
       },
     },
     {
@@ -260,11 +260,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, sardele, sušené rajčiny, cesnak, syr',
       size32cm: {
         weight: 500,
-        price: 5.9,
+        price: 6.5,
       },
       size50cm: {
         weight: 1050,
-        price: 15.7,
+        price: 17.2,
       },
     },
     {
@@ -272,11 +272,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, rukola, prosciutto, parmezán, olivový olej, syr',
       size32cm: {
         weight: 580,
-        price: 8.9,
+        price: 9.4,
       },
       size50cm: {
         weight: 1230,
-        price: 23.0,
+        price: 24.0,
       },
     },
     {
@@ -284,11 +284,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, šunka, ananás, syr',
       size32cm: {
         weight: 580,
-        price: 5.8,
+        price: 6.3,
       },
       size50cm: {
         weight: 1230,
-        price: 14.6,
+        price: 15.6,
       },
     },
     {
@@ -296,11 +296,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, štyri druhy syra',
       size32cm: {
         weight: 550,
-        price: 6.6,
+        price: 7.2,
       },
       size50cm: {
         weight: 1210,
-        price: 16.5,
+        price: 18.0,
       },
     },
     {
@@ -308,11 +308,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, suchá saláma, syr',
       size32cm: {
         weight: 520,
-        price: 5.2,
+        price: 5.7,
       },
       size50cm: {
         weight: 1140,
-        price: 13.5,
+        price: 14.5,
       },
     },
     {
@@ -320,11 +320,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, paprika, rajčina, brokolica, kukurica, syr',
       size32cm: {
         weight: 530,
-        price: 6.0,
+        price: 6.5,
       },
       size50cm: {
         weight: 1150,
-        price: 15.0,
+        price: 16.0,
       },
     },
     {
@@ -332,11 +332,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, krevety, cesnak, rukola, syr',
       size32cm: {
         weight: 520,
-        price: 7.9,
+        price: 8.4,
       },
       size50cm: {
         weight: 1130,
-        price: 19.0,
+        price: 20.0,
       },
     },
     {
@@ -344,11 +344,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, dary mora, syr',
       size32cm: {
         weight: 520,
-        price: 8.3,
+        price: 8.9,
       },
       size50cm: {
         weight: 1130,
-        price: 19.5,
+        price: 21.5,
       },
     },
     {
@@ -356,11 +356,11 @@ function getPizza() {
       description: 'Rajčinová omáčka, suchá saláma, klobása, anglická slanina, syr',
       size32cm: {
         weight: 590,
-        price: 6.8,
+        price: 7.3,
       },
       size50cm: {
         weight: 1240,
-        price: 17.5,
+        price: 18.5,
       },
     },
   ];
@@ -373,11 +373,11 @@ function getKebab() {
       description: 'Žemľa, čínska kapusta, rajčina, mäso, dressing',
       SizeSmallKebab: {
         weight: 270,
-        price: 3.5,
+        price: 3.8,
       },
       SizeLargeKebab: {
         weight: 480,
-        price: 6.3,
+        price: 6.5,
       },
     },
     {
@@ -385,11 +385,11 @@ function getKebab() {
       description: 'Tortilla, čínska kapusta, rajčina, mäso, dressing',
       SizeSmallKebab: {
         weight: 260,
-        price: 3.4,
+        price: 3.7,
       },
       SizeLargeKebab: {
         weight: 430,
-        price: 5.5,
+        price: 6.0,
       },
     },
     {
@@ -397,11 +397,11 @@ function getKebab() {
       description: 'Hranolky/ryža, mäso, čínska kapusta, rajčina, dressing',
       SizeSmallKebab: {
         weight: 310,
-        price: 4.6,
+        price: 5.0,
       },
       SizeLargeKebab: {
         weight: 580,
-        price: 7.5,
+        price: 8.0,
       },
     },
     {
@@ -409,11 +409,11 @@ function getKebab() {
       description: 'Hranolky/ryža, mäso, čínska kapusta, rajčina, dressing',
       SizeSmallKebab: {
         weight: 300,
-        price: 3.1,
+        price: 3.6,
       },
       SizeLargeKebab: {
         weight: 550,
-        price: 6.0,
+        price: 6.6,
       },
     },
   ];
@@ -460,52 +460,52 @@ function getSalat() {
       name: 'Kurací klasik',
       description: 'Ľadový šalát, rajčina, uhorka, kurací steak, dresing',
       weight: 400,
-      price: 5.2,
+      price: 6.0,
     },
     {
       name: 'Kurací špeciál',
       description:
         'rajčina, poľný šalát, kuracie kúsky, restovaná cibuľka, balsamico, sladké chilli, olivový olej, pečivo',
       weight: 380,
-      price: 5.8,
+      price: 6.2,
     },
     {
       name: 'Jarný šalát',
       description: 'rajčina, poľný šalát, mozzarella, an.slaninka, balsamico, pečivo',
       weight: 350,
-      price: 5.8,
+      price: 6.2,
     },
     {
       name: 'Avokádový šalát',
       description: 'avokádo, mozzarella, rajčina, poľný šalát, prosciutto, balsamico, pečivo',
       weight: 370,
-      price: 5.8,
+      price: 6.2,
     },
     {
       name: 'Tuniakový šalát',
       description: 'zmes šalátov, tuniak, červená cibulka, balsamico',
       weight: 380,
-      price: 5.8,
+      price: 6.5,
     },
     {
       name: 'Šalát Caprese',
       description: 'rajčina, mozzarela, olivový olej, balsamico, pečivo',
       weight: 430,
-      price: 5.8,
+      price: 6.2,
     },
     {
       name: 'Kebab šalát klasik',
       description: 'čínska kapusta, rajčina, kebab mäso, dresing',
       weight: 350,
-      price: 4.5,
+      price: 5.0,
     },
     {
       name: 'Kebab šalát špeciál',
       description: 'poľný šalát, ľadový šalát, rajčina, kebab mäso, dresing',
       weight: 350,
-      price: 5.3,
+      price: 5.6,
     },
-    { name: 'Miešaný šalát', description: 'Ľadový šalát, rajčina, uhorka', weight: 250, price: 4.0 },
+    { name: 'Miešaný šalát', description: 'Ľadový šalát, rajčina, uhorka', weight: 250, price: 4.3 },
   ];
 }
 
@@ -513,99 +513,123 @@ function getDrinks() {
   return [
     {
       name: 'Coca-cola',
+      description: 'fľaša 0,5l',
+      type: 'nealko',
+      price: 1.8,
+    },
+    {
+      name: 'Coca-cola',
       description: 'fľaša 2l',
       type: 'nealko',
-      price: 2.5,
+      price: 2.8,
+    },
+    {
+      name: 'Coca-cola zero',
+      description: 'fľaša 0,5l',
+      type: 'nealko',
+      price: 1.8,
     },
     {
       name: 'Coca-cola zero',
       description: 'fľaša 2l',
       type: 'nealko',
-      price: 2.5,
+      price: 2.8,
+    },
+    {
+      name: 'Fanta',
+      description: 'fľaša 0,5l',
+      type: 'nealko',
+      price: 1.8,
     },
     {
       name: 'Fanta',
       description: 'fľaša 2l',
       type: 'nealko',
-      price: 2.5,
+      price: 2.8,
+    },
+    {
+      name: 'Sprite',
+      description: 'fľaša 0,5l',
+      type: 'nealko',
+      price: 1.8,
     },
     {
       name: 'Sprite',
       description: 'fľaša 2l',
       type: 'nealko',
-      price: 2.5,
+      price: 2.8,
     },
     {
       name: 'Ice tea broskyňa',
       description: 'fľaša 0,5l',
       type: 'nealko',
-      price: 1.5,
+      price: 2.1,
     },
     {
       name: 'Ice tea lemon',
       description: 'fľaša 0,5l',
       type: 'nealko',
-      price: 1.5,
+      price: 2.1,
     },
     {
       name: 'Cappy pomaranč',
       description: 'fľaša 0,33l',
       type: 'nealko',
-      price: 1.4,
+      price: 1.6,
     },
     {
       name: 'Cappy multivitamín',
       description: 'fľaša 0,33l',
       type: 'nealko',
-      price: 1.4,
+      price: 1.6,
     },
     {
       name: 'Cappy jablko',
       description: 'fľaša 0,33l',
       type: 'nealko',
-      price: 1.4,
+      price: 1.6,
     },
     {
       name: 'Cappy jahoda',
       description: 'fľaša 0,33l',
       type: 'nealko',
-      price: 1.4,
+      price: 1.6,
     },
     {
       name: 'Bonaqua neperlivá',
       description: 'fľaša 0,5l',
       type: 'nealko',
-      price: 1.3,
+      price: 1.5,
     },
     {
       name: 'Bonaqua jemne perlivá',
       description: 'fľaša 0,5l',
       type: 'nealko',
-      price: 1.3,
+      price: 1.5,
     },
     {
       name: 'Bonaqua ochutená',
       description: 'fľaša 0,5l',
       type: 'nealko',
-      price: 1.3,
+      price: 1.5,
     },
     {
       name: 'Rajec ochutený materina dúška',
       description: 'fľaša 0,75l',
       type: 'nealko',
-      price: 1.5,
+      price: 1.8,
     },
     {
       name: 'Rajec ochutený egreš',
       description: 'fľaša 0,75l',
       type: 'nealko',
-      price: 1.5,
+      price: 1.8,
     },
     {
       name: 'Rajec ochutený púpava',
       description: 'fľaša 0,75l',
       type: 'nealko',
-      price: 1.5,
+      price: 1.8,
     },
     {
       name: 'Zlatý bažant radler',
@@ -634,43 +658,43 @@ function getOther() {
       name: 'Cigánska pečienka v domácej žemli',
       description: 'Domáca žemľa, bravčová krkovička, restovaná cibuľka, horčica',
       weight: 320,
-      price: 4.7,
+      price: 4.9,
     },
     {
       name: 'Cheese burger v domácej žemli',
       description: 'Domáca žemľa, vyprážaný syr, šalat, rajčina, uhorka, dresing',
       weight: 280,
-      price: 4.3,
+      price: 4.6,
     },
     {
       name: 'Chicken burger v domácej žemli',
       description: 'Domáca žemľa, bravčová krkovička, restovaná cibuľka, horčica',
       weight: 280,
-      price: 4.3,
+      price: 4.6,
     },
     {
       name: 'Hovädzí burger v domácej žemli',
       description: 'Domáca žemľa, hovädzie mäso, rajčina, uhorka, šalát, cibuľa, slaninka, dresing',
       weight: 300,
-      price: 6.8,
+      price: 7.9,
     },
     {
       name: 'Kuracie krídla',
       description: 'pikantné/BBQ',
       weight: 300,
-      price: 6.9,
+      price: 7.9,
     },
     {
       name: 'Vyprážaný syr',
       description: 'hranolky, zeleninová obloha',
       weight: 120,
-      price: 6.0,
+      price: 6.6,
     },
     {
       name: 'Kurací rezeň',
       description: 'hranolky, zeleninová obloha',
       weight: 120,
-      price: 6.3,
+      price: 6.9,
     },
   ];
 }
@@ -681,264 +705,264 @@ function getPrilohy() {
       name: 'Ananás',
       prilohy32cm: {
         weight: 80,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 170,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Cibuľa',
       prilohy32cm: {
         weight: 50,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 110,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Cesnak',
       prilohy32cm: {
         weight: 5,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 10,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Rajčina',
       prilohy32cm: {
         weight: 60,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 130,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Brokolica',
       prilohy32cm: {
         weight: 50,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 110,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Šampiňóny',
       prilohy32cm: {
         weight: 60,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 130,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Kukurica',
       prilohy32cm: {
         weight: 60,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 130,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Paprika',
       prilohy32cm: {
         weight: 50,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 110,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Olivy',
       prilohy32cm: {
         weight: 30,
-        price: 0.6,
+        price: 0.7,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.2,
+        price: 1.4,
       },
     },
     {
       name: 'Šunka',
       prilohy32cm: {
         weight: 60,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 130,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Suchá saláma',
       prilohy32cm: {
         weight: 30,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Pikantná saláma',
       prilohy32cm: {
         weight: 30,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Baramie rohy',
       prilohy32cm: {
         weight: 40,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 85,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Chilli',
       prilohy32cm: {
         weight: 5,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 10,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Feferóny',
       prilohy32cm: {
         weight: 20,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 40,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Syr Niva',
       prilohy32cm: {
         weight: 20,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 40,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Mozarella',
       prilohy32cm: {
         weight: 60,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 125,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Syr Eidam',
       prilohy32cm: {
         weight: 70,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 150,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Parmezán',
       prilohy32cm: {
         weight: 5,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 10,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Artičoky',
       prilohy32cm: {
         weight: 30,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Vajce',
       prilohy32cm: {
         weight: 30,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Rukola',
       prilohy32cm: {
         weight: 30,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Špargla',
       prilohy32cm: {
         weight: 30,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
       name: 'Capari',
       prilohy32cm: {
         weight: 30,
-        price: 0.9,
+        price: 1.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 1.8,
+        price: 2.0,
       },
     },
     {
@@ -1045,99 +1069,99 @@ function getPrilohy() {
       name: 'Mleté mäso',
       prilohy32cm: {
         weight: 70,
-        price: 1.0,
+        price: 1.2,
       },
       prilohy50cm: {
         weight: 150,
-        price: 2.0,
+        price: 2.4,
       },
     },
     {
       name: 'Kuracie mäso',
       prilohy32cm: {
         weight: 70,
-        price: 1.0,
+        price: 1.2,
       },
       prilohy50cm: {
         weight: 150,
-        price: 2.0,
+        price: 2.4,
       },
     },
     {
       name: 'Kebab mäso',
       prilohy32cm: {
         weight: 70,
-        price: 1.0,
+        price: 1.2,
       },
       prilohy50cm: {
         weight: 150,
-        price: 2.0,
+        price: 2.4,
       },
     },
     {
       name: 'Tuniak',
       prilohy32cm: {
         weight: 50,
-        price: 1.0,
+        price: 1.2,
       },
       prilohy50cm: {
         weight: 110,
-        price: 2.0,
+        price: 2.4,
       },
     },
     {
       name: 'Klobása',
       prilohy32cm: {
         weight: 50,
-        price: 1.0,
+        price: 1.2,
       },
       prilohy50cm: {
         weight: 110,
-        price: 2.0,
+        price: 2.4,
       },
     },
     {
       name: 'Anglická slanina',
       prilohy32cm: {
         weight: 50,
-        price: 1.0,
+        price: 1.2,
       },
       prilohy50cm: {
         weight: 110,
-        price: 2.0,
+        price: 2.4,
       },
     },
     {
       name: 'Proscuitto di Parma',
       prilohy32cm: {
         weight: 30,
-        price: 2.8,
+        price: 3.0,
       },
       prilohy50cm: {
         weight: 65,
-        price: 5.5,
+        price: 6.0,
       },
     },
     {
       name: 'Krevety',
       prilohy32cm: {
         weight: 70,
-        price: 2.8,
+        price: 3.0,
       },
       prilohy50cm: {
         weight: 140,
-        price: 5.5,
+        price: 6.0,
       },
     },
     {
       name: 'Dary Mora',
       prilohy32cm: {
         weight: 70,
-        price: 2.8,
+        price: 3.0,
       },
       prilohy50cm: {
         weight: 140,
-        price: 5.5,
+        price: 6.0,
       },
     },
   ];
